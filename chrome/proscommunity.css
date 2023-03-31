@@ -1,0 +1,105 @@
+/* icons */
+article:not([class]) {
+    font-size: 6px;
+    width: 80px !important;
+    margin: 0 0 0 0 !important;
+    padding: 0 0 10px 0;
+    text-align: "center";
+}
+article:not([class]) > a {
+    width: 80px !important;
+    height: 30px !important;
+    margin: 0 0 0 0 !important;
+}
+article:not([class]) > h3  {
+    margin-bottom: 0 !important;
+}
+article:not([class]) > h3 > a {
+    font-size: 10px;
+}
+div.custom-tiled-node-navigation {
+    padding: 0 0;
+}
+div.custom-tiled-node-navigation > section > div {
+    padding: 0 0;
+    margin: 0 0;
+}
+div.lia-quilt-column-main-content {
+    padding-top: 0 !important;
+}
+/* hide rubbish related to icons */
+article:not([class]) > p {
+     display: none  !important;
+}
+/* selector / button row */
+#community-activity-sorted-by {
+    height : initial  !important;
+}
+div.custom-start-conversation-button > a {
+    padding : 6px 12px !important;
+}
+
+/* lightly pad articles */
+article.custom-message-tile { padding: 10px 4px; }
+article.custom-message-tile > div > h3 {
+   background-color: #3d65c9;
+   padding: 20px;
+   border-radius: 10px 10px 10px 10px;
+}
+article.custom-message-tile > div > h3 > a {
+   font-size: 18px;
+   color: #fff;
+   padding: 20px 10px;
+}
+/* green banner for solved threads */
+h3:has(> i.custom-thread-solved) {
+    background-color: green !important;
+}
+/* icons bar */
+.lia-quilt-row-main-top {
+    height: 100px;
+ }
+
+/* no padding */
+.custom-tiled-node-navigation { padding: 0 0 0 0; }
+.lia-quilt-column-main-content { padding: 0 0 0 0; }
+.lia-quilt-column-18 { padding: 0 0 0 0; }
+.header-top-search-wrapper { padding: 0 0 0 0; }
+#lia-searchformV32 { padding: 0 0 0 0; }
+.lia-quilt-row-header-hero { padding: 0 0 0 0; display: none;}
+article.custom-message-tile { padding: 0 0 0 0; }
+article.custom-message-tile > div > h3 { padding: 0 0 0 0; }
+/* hidden */
+div.lia-panel:nth-child(2) > div:nth-child(1) { display: none; }
+#custom-loader > section:nth-child(1) > header:nth-child(1) > h2:nth-child(1) { display: none; }
+div.header-hero-wrapper { display: none; }
+.custom-getting-started { display: none; }
+.CustomContent { display: none; }
+
+/* scale down message title */
+div.lia-message-subject { font-size: 20px; }
+
+/* dynamically assigned */
+.pros-hidden {
+     display: none;
+}
+.pros-visible {
+     display: flex;
+}
+.pros-zeroreply {
+    border-radius: 22px 22px 0 0;
+    background-color: #FFF5C9;
+}
+.pros-hot {
+    border-radius: 22px 22px 0 0;
+    background-color: #D9F5FF !important;
+    opacity: 1 !important;
+}
+.pros-solved {
+    border-radius: 22px 22px 0 0;
+    background-color: #E3FFE5;
+    opacity: 0.30;
+}
+.pros-alwaysOn {
+    display: inline-block !important;
+}

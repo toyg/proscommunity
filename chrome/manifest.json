@@ -1,0 +1,41 @@
+{
+  "name": "PrOSCommunity",
+  "version": "1.0",
+  "description": "Unofficial enhancements to OneStream Community forums",
+  "permissions": [
+    "activeTab",
+    "declarativeContent"
+  ],
+  "content_scripts": [
+    {"world": "MAIN",
+      "run_at": "document_end",
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Forums/*",
+        "https://community.onestreamsoftware.com/t5/Rules/*",
+        "https://community.onestreamsoftware.com/t5/Security/*",
+        "https://community.onestreamsoftware.com/t5/Application-Build/*",
+        "https://community.onestreamsoftware.com/t5/Reporting/*",
+        "https://community.onestreamsoftware.com/t5/MarketPlace/*",
+        "https://community.onestreamsoftware.com/t5/Workflow-and-Data-Integration/*",
+        "https://community.onestreamsoftware.com/t5/French-Language-Forum/*"
+      ],
+      "css": [
+        "proscommunity.css"
+      ],
+      "js": [
+        "proscommunity.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [{
+  "resources": ["xhroverride.js"],
+  "matches": ["<all_urls>"]
+}],
+  "icons": {
+    "16": "images/get_started16.png",
+    "32": "images/get_started32.png",
+    "48": "images/get_started48.png",
+    "128": "images/get_started128.png"
+  },
+  "manifest_version": 3
+}
