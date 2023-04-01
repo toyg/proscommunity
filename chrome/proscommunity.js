@@ -17,7 +17,10 @@ function disable(){
 }
 
 function elaborate() {
-    let articles = document.querySelectorAll("div.message-list > article");
+    let selector = "div.message-list > article";
+    if(!window.location.href.includes("/Forums/")) selector = "div.custom-message-list > section > article";
+
+    let articles = document.querySelectorAll(selector);
     let hiddenScore = 0;
     articles.forEach(n => {
         if(n.querySelector("li.custom-tile-replies > b").innerText === "0"){

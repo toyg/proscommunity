@@ -75,9 +75,13 @@ div.lia-panel:nth-child(2) > div:nth-child(1) { display: none; }
 div.header-hero-wrapper { display: none; }
 .custom-getting-started { display: none; }
 .CustomContent { display: none; }
+div.custom-message-list > section > header > h2 {
+    display: none;
+}
+
 
 /* scale down message title */
-div.lia-message-subject { font-size: 20px; }
+div.lia-message-subject { font-size: 20px !important; }
 
 /* dynamically assigned */
 .pros-hidden {
