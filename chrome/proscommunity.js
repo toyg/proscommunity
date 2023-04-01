@@ -1,12 +1,22 @@
 const prjCode = "PrOSCommunity";
 
-var enableFilterSolved = false;
+// autologin support
+chrome.storage.sync.get({ autologin: false },
+    function(items) {
+        if(items.autologin == true){
+            let loginNodes = document.getElementsByClassName("login-link");
+            if(loginNodes[0] != null) loginNodes[0].click();
+        }
+    });
+
+// filter answered posts
+var enableFilterReplied = false;
 function enable(){
-    enableFilterSolved = true;
+    enableFilterReplied = true;
 }
 
 function disable(){
-    enableFilterSolved = false;
+    enableFilterReplied = false;
 }
 
 function elaborate() {
@@ -19,7 +29,7 @@ function elaborate() {
         if(n.querySelector("li.custom-tile-replies > b").innerText === "0"){
             n.classList.add("pros-zeroreply");
         } else {
-            if(enableFilterSolved == true){
+            if(enableFilterReplied == true){
                n.style.display = "none";
                hiddenScore++;
             } else {
@@ -46,7 +56,6 @@ if(headerSelector != null){
 }
 
 let noReplied = document.getElementById('noRepliedToggle');
-console.log(noReplied);
 if(noReplied != null){
     noReplied.addEventListener('change', function() {
         if (this.checked) {

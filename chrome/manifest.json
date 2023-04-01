@@ -5,8 +5,11 @@
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
     "activeTab",
-    "declarativeContent"
+    "declarativeContent",
+    "storage"
   ],
+  "options_page": "options.html",
+
   "content_scripts": [
     {
       "run_at": "document_end",
