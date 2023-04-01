@@ -1,6 +1,7 @@
 {
   "name": "PrOSCommunity",
   "version": "1.0",
+  "author": "g.lacava@gmail.com",
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
     "activeTab",
