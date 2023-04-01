@@ -1,13 +1,6 @@
 const prjCode = "PrOSCommunity";
 
 var enableFilterSolved = false;
-
-let cpNode = document.createElement('div');
-let controlPanelHtml = '<input type="checkbox" id="noRepliedToggle"> <label for="noRepliedToggle" class="pros-alwaysOn">Hide Replied</label>';
-controlPanelHtml += ' Hidden posts: <label id="hiddenScore" class="pros-alwaysOn">0</label>';
-cpNode.innerHTML = '<div style="position: relative; display: block; left: 50%;">' + controlPanelHtml + '</div>';
-document.querySelector("header > div").appendChild(cpNode);
-
 function enable(){
     enableFilterSolved = true;
 }
@@ -42,15 +35,27 @@ function elaborate() {
     });
     document.getElementById("hiddenScore").innerText = hiddenScore;
  }
+let headerSelector = document.querySelector("header > div");
 
-document.getElementById('noRepliedToggle').addEventListener('change', function() {
-  if (this.checked) {
-    console.log(`[${prjCode}]: Hiding replied posts`);
-    enable();
-  } else {
-    console.log(`[${prjCode}]: Showing replied posts`);
-    disable();
-  }
-});
+if(headerSelector != null){
+    let cpNode = document.createElement('div');
+    let controlPanelHtml = '<input type="checkbox" id="noRepliedToggle"> <label for="noRepliedToggle" class="pros-alwaysOn">Hide Replied</label>';
+    controlPanelHtml += ' Hidden posts: <label id="hiddenScore" class="pros-alwaysOn">0</label>';
+    cpNode.innerHTML = '<div style="position: relative; display: block; left: 50%;">' + controlPanelHtml + '</div>';
+    headerSelector.appendChild(cpNode);
+}
 
-window.setInterval(elaborate, 1000);
+let noReplied = document.getElementById('noRepliedToggle');
+console.log(noReplied);
+if(noReplied != null){
+    noReplied.addEventListener('change', function() {
+        if (this.checked) {
+            console.log(`[${prjCode}]: Hiding replied posts`);
+            enable();
+        } else {
+            console.log(`[${prjCode}]: Showing replied posts`);
+            disable();
+        }
+    });
+    window.setInterval(elaborate, 1000);
+};
