@@ -2,11 +2,16 @@
 <html>
 <head>
     <title>PrOSCommunity Options</title>
+    <link rel="stylesheet" type="text/css" href="proscommunity.css"/>
 </head>
 <body>
-<input type="checkbox" id="autologin"><label for="autologin">Log in on page load</label>
-<div id="status" style="height: 200px; width:100px; background-color:red;"></div>
-
+<div class="pros-autologin">
+    <input type="checkbox" id="pros-autologin">
+    <label for="pros-autologin">
+        Log in on page load
+    </label>
+    <div id="pros-optionstatus"></div>
+</div>
 <script src="options.js"></script>
 </body>
 </html>

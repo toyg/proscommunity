@@ -110,3 +110,12 @@ div.lia-message-subject {
 .pros-alwaysOn {
     display: inline-block !important;
 }
+
+#pros-optionstatus {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.pros-autologin {
+    font-size: 2em;
+}
