@@ -78,10 +78,13 @@ div.header-hero-wrapper { display: none; }
 div.custom-message-list > section > header > h2 {
     display: none;
 }
-
-
+div.lia-quilt-row-message-header-top { display: none !important;}
+div.lia-quilt-row-message-header-main { display: none !important;}
+div.lia-quilt-row-message-header-bottom { padding: 0 0 8px 0 !important;}
 /* scale down message title */
-div.lia-message-subject { font-size: 20px !important; }
+div.lia-message-subject {
+    font-size: 20px !important;
+    display: none !important;}
 
 /* dynamically assigned */
 .pros-hidden {
