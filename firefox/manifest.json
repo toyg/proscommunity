@@ -1,0 +1,51 @@
+{
+  "name": "PrOSCommunity",
+  "version": "1.0",
+  "author": "g.lacava@gmail.com",
+  "developer": {
+    "name": "Giacomo Lacava",
+    "url": "http://blog.pythonaro.com"
+  },
+  "description": "Unofficial enhancements to OneStream Community forums",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "proscommunity@pythonaro.com"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Forums/*",
+        "https://community.onestreamsoftware.com/t5/Rules/*",
+        "https://community.onestreamsoftware.com/t5/Security/*",
+        "https://community.onestreamsoftware.com/t5/Application-Build/*",
+        "https://community.onestreamsoftware.com/t5/Reporting/*",
+        "https://community.onestreamsoftware.com/t5/MarketPlace/*",
+        "https://community.onestreamsoftware.com/t5/Workflow-and-Data-Integration/*",
+        "https://community.onestreamsoftware.com/t5/French-Language-Forum/*"
+      ],
+      "css": [
+        "proscommunity.css"
+      ],
+      "js": [
+        "proscommunity.js"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "images/pros16.png",
+    "32": "images/pros32.png",
+    "48": "images/pros48.png",
+    "128": "images/pros128.png"
+  },
+  "manifest_version": 2
+}
