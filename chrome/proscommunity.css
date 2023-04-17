@@ -40,17 +40,55 @@ div.custom-start-conversation-button > a {
 }
 
 /* lightly pad articles */
-article.custom-message-tile { padding: 10px 4px; }
+article.custom-message-tile { padding: 10px 4px; border-bottom: 0; }
 article.custom-message-tile > div > h3 {
    background-color: #3d65c9;
    padding: 20px;
-   border-radius: 10px 10px 10px 10px;
+   border-radius: 0px 10px 10px 0px;
 }
 article.custom-message-tile > div > h3 > a {
    font-size: 18px;
    color: #fff;
    padding: 20px 10px;
 }
+
+article.custom-message-tile > aside {
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    padding: 0;
+    margin: 0;
+    font-size: xx-small;
+}
+.custom-message-tile footer {
+    order: 3 !important;
+    padding-bottom: 2px !important;
+}
+footer > ul.custom-tile-statistics {
+    text-align: right;
+    height: 10px;
+    position: relative;
+    bottom: 18px;
+    right: 6px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+article.custom-message-tile > div > p {
+    padding: 0; margin: 0; border: 0;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+figure {
+    padding: 0; margin: 0 !important; border: 0;
+    padding-bottom: 2px;
+}
+figure > img {
+    filter: drop-shadow(0 0 0.75rem grey);
+    padding: 4px 0;
+}
+
 /* green banner for solved threads */
 h3:has(> i.custom-thread-solved) {
     background-color: green !important;
@@ -94,16 +132,16 @@ div.lia-message-subject {
      display: flex;
 }
 .pros-zeroreply {
-    border-radius: 22px 22px 0 0;
+    border-radius: 0px 22px 10px 0;
     background-color: #FFF5C9;
 }
 .pros-hot {
-    border-radius: 22px 22px 0 0;
+    border-radius: 0px 22px 10px 0;
     background-color: #D9F5FF !important;
     opacity: 1 !important;
 }
 .pros-solved {
-    border-radius: 22px 22px 0 0;
+    border-radius: 0px 22px 10px 0;
     background-color: #E3FFE5;
     opacity: 0.30;
 }
@@ -118,4 +156,10 @@ div.lia-message-subject {
 
 .pros-autologin {
     font-size: 2em;
+}
+
+input.BatchProcessing {
+    order: 4 !important;
+    top: -15px !important;
+    padding: 0; margin: 0 !important; border: 0;
 }

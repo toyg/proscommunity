@@ -17,6 +17,7 @@
     {
       "run_at": "document_end",
       "matches": [
+         "https://community.onestreamsoftware.com/",
         "https://community.onestreamsoftware.com/t5/Forums/*",
         "https://community.onestreamsoftware.com/t5/Rules/*",
         "https://community.onestreamsoftware.com/t5/Security/*",
@@ -32,6 +33,10 @@
       "js": [
         "proscommunity.js"
       ]
+    },
+    {
+     "matches": [ "https://community.onestreamsoftware.com/" ],
+    "css":  ["proscommunity_home.css"]
     }
   ],
   "icons": {
