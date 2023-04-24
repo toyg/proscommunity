@@ -1,13 +1,13 @@
 /* icons */
 article:not([class]) {
     font-size: 6px;
-    width: 80px !important;
+    width: 90px !important;
     margin: 0 0 0 0 !important;
     padding: 0 0 10px 0;
     text-align: "center";
 }
 article:not([class]) > a {
-    width: 80px !important;
+    width: 90px !important;
     height: 30px !important;
     margin: 0 0 0 0 !important;
 }

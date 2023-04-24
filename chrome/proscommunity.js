@@ -11,6 +11,8 @@ chrome.storage.sync.get({ autologin: false },
 
 // filter answered posts
 var enableFilterReplied = false;
+var hiddenScore = 0;
+
 function enable(){
     enableFilterReplied = true;
     elaborate();
@@ -51,20 +53,26 @@ function modNode(n) {
     if(n.querySelector("aside > div > strong > a").href.includes("idb-p")){
         n.classList.add("pros-ideas");
     };
+    document.getElementById("hiddenScore").innerText = hiddenScore;
 };
 
 
 function elaborate() {
     let selector = "div.message-list > article";
-    if(!window.location.href.includes("/Forums/") && !window.location.href.endsWith("onestreamsoftware.com/")){
+    let pageUrl = new URL(window.location.href);
+    let isSummaryPage = pageUrl.pathname.includes("/Forums/") ||
+                pageUrl.pathname.includes("/Partners/") ||
+                pageUrl.pathname.includes("/Solution-Exchange/") ||
+                pageUrl.pathname === "/";
+    if(!isSummaryPage){
         selector = "div.custom-message-list > section > article";
     }
     let articles = document.querySelectorAll(selector);
-    let hiddenScore = 0;
+
     articles.forEach(n => {
         modNode(n);
     });
-    document.getElementById("hiddenScore").innerText = hiddenScore;
+
  }
 
 

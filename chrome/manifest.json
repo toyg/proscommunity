@@ -24,8 +24,14 @@
         "https://community.onestreamsoftware.com/t5/Application-Build/*",
         "https://community.onestreamsoftware.com/t5/Reporting/*",
         "https://community.onestreamsoftware.com/t5/MarketPlace/*",
+        "https://community.onestreamsoftware.com/t5/OpenPlace/*",
         "https://community.onestreamsoftware.com/t5/Workflow-and-Data-Integration/*",
-        "https://community.onestreamsoftware.com/t5/French-Language-Forum/*"
+        "https://community.onestreamsoftware.com/t5/French-Language-Forum/*",
+        "https://community.onestreamsoftware.com/t5/Solution-Exchange/*",
+        "https://community.onestreamsoftware.com/t5/Moderate/*",
+        "https://community.onestreamsoftware.com/t5/Partner-Forum/bd-p/Partner/*",
+        "https://community.onestreamsoftware.com/t5/Partners/ct-p/Partner/*"
+
       ],
       "css": [
         "proscommunity.css"
