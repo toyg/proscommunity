@@ -13,42 +13,14 @@ chrome.storage.sync.get({ autologin: false },
 var enableFilterReplied = false;
 function enable(){
     enableFilterReplied = true;
+    elaborate();
 }
 
 function disable(){
     enableFilterReplied = false;
+    elaborate();
 }
 
-function elaborate() {
-    let selector = "div.message-list > article";
-    if(!window.location.href.includes("/Forums/") && !window.location.href.endsWith("onestreamsoftware.com/")){
-        selector = "div.custom-message-list > section > article";
-    }
-    let articles = document.querySelectorAll(selector);
-    let hiddenScore = 0;
-    articles.forEach(n => {
-        if(n.querySelector("li.custom-tile-replies > b").innerText === "0"){
-            n.classList.add("pros-zeroreply");
-        } else {
-            if(enableFilterReplied == true){
-               n.style.display = "none";
-               hiddenScore++;
-            } else {
-                n.style.display = "flex";
-            }
-        };
-        if(n.querySelector("i.custom-thread-solved")) {
-            n.classList.add("pros-solved");
-        };
-        if(Number.parseInt(n.querySelector("li.custom-tile-replies > b").innerText) >=5 ){
-            n.classList.add("pros-hot");
-        };
-        if(n.querySelector("aside > div > strong > a").href.includes("idb-p")){
-            n.classList.add("pros-ideas");
-        }
-    });
-    document.getElementById("hiddenScore").innerText = hiddenScore;
- }
 let headerSelector = document.querySelector("header > div");
 
 if(headerSelector != null){
@@ -58,6 +30,43 @@ if(headerSelector != null){
     cpNode.innerHTML = '<div style="position: relative; display: block; left: 50%;">' + controlPanelHtml + '</div>';
     headerSelector.appendChild(cpNode);
 }
+
+function modNode(n) {
+    if(n.querySelector("li.custom-tile-replies > b").innerText === "0"){
+        n.classList.add("pros-zeroreply");
+    } else {
+        if(enableFilterReplied == true){
+            n.style.display = "none";
+            hiddenScore++;
+        } else {
+            n.style.display = "flex";
+        };
+    };
+    if(n.querySelector("i.custom-thread-solved")) {
+        n.classList.add("pros-solved");
+    };
+    if(Number.parseInt(n.querySelector("li.custom-tile-replies > b").innerText) >=5 ){
+        n.classList.add("pros-hot");
+    };
+    if(n.querySelector("aside > div > strong > a").href.includes("idb-p")){
+        n.classList.add("pros-ideas");
+    };
+};
+
+
+function elaborate() {
+    let selector = "div.message-list > article";
+    if(!window.location.href.includes("/Forums/") && !window.location.href.endsWith("onestreamsoftware.com/")){
+        selector = "div.custom-message-list > section > article";
+    }
+    let articles = document.querySelectorAll(selector);
+    let hiddenScore = 0;
+    articles.forEach(n => {
+        modNode(n);
+    });
+    document.getElementById("hiddenScore").innerText = hiddenScore;
+ }
+
 
 let noReplied = document.getElementById('noRepliedToggle');
 if(noReplied != null){
@@ -70,5 +79,35 @@ if(noReplied != null){
             disable();
         }
     });
-    window.setInterval(elaborate, 1000);
+    // first run
+    elaborate();
 };
+
+// Select the node that will be observed for mutations
+const targetNode = document.querySelector("div.message-list");
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: false, childList: true, subtree: false };
+
+// Callback function to execute when mutations are observed
+const callback = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+        if (mutation.type === "childList") {
+            mutation.addedNodes.forEach(n => {
+                if(n.nodeName.toLowerCase() == "article") {
+                    modNode(n);
+                }
+            })
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+// Later, you can stop observing
+//observer.disconnect();
+
