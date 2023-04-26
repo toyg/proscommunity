@@ -146,7 +146,7 @@ if(isSummaryPage()){
 
 let hideList = document.getElementById("hideControls")
 
-Object.keys(to_hide).forEach(key => {
+Object.keys(to_hide).sort().forEach(key => {
     addControl(key, hideList);
 });
 elaborate();
@@ -171,8 +171,17 @@ if(targetNode) {
                         }
                         modNode(n);
                     }
-
                 })
+                // rearrange sorted list
+                let list = document.querySelector('#hideControls');
+                [...list.children]
+                      .sort((a,b)=>a.innerText>b.innerText?1:-1)
+                      .forEach(node=>list.appendChild(node));
+
+                // keep Replied first
+                let repl = list.querySelector("#toggle-replied").parentElement;
+                list.removeChild(repl);
+                list.insertBefore(repl, list.children[0]);
             }
         }
     };
