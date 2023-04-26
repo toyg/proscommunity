@@ -38,9 +38,41 @@ article:not([class]) > p {
 div.custom-start-conversation-button > a {
     padding : 6px 12px !important;
 }
+section.hideControlSection {
+    display: block;
+    position: relative;
+}
+
+#hideControls {
+    margin: 0; padding: 0; border:0;
+    display: inline;
+
+}
+#hiddenScore {
+    margin: 0 !important; padding: 0; border:0;
+}
+
+li.pros-hide-control{
+    display: inline;
+    padding: 0 4px;
+    margin: 0 1px !important;
+    border: 0;
+    white-space: nowrap;
+    background-color: #E7F3FF;
+
+    /*    background-color: #D9F5FF; */
+    border-radius: 6px;
+
+}
+li.pros-hide-control > label {
+    margin: 0; padding: 0; border:0;
+    font-weight: normal;
+    font-size: small;
+}
 
 /* lightly pad articles */
-article.custom-message-tile { padding: 10px 4px; border-bottom: 0; }
+article.custom-message-tile {
+    padding: 10px 4px; border-bottom: 0; }
 article.custom-message-tile > div > h3 {
    background-color: #3d65c9;
    padding: 20px;
@@ -49,7 +81,7 @@ article.custom-message-tile > div > h3 {
 article.custom-message-tile > div > h3 > a {
    font-size: 18px;
    color: #fff;
-   padding: 20px 10px;
+   padding: 0 10px;
 }
 
 article.custom-message-tile > aside {
@@ -78,10 +110,11 @@ footer > ul.custom-tile-statistics {
 article.custom-message-tile > div > p {
     padding: 0; margin: 0; border: 0;
     padding-bottom: 2px;
-    padding-left: 2px;
+    padding-left: 10px;
 }
 figure {
     padding: 0; margin: 0 !important; border: 0;
+    padding-left: 10px;
     padding-bottom: 2px;
 }
 figure > img {

@@ -109,8 +109,9 @@ function addControl(key, listNode){
     let inputNode = document.getElementById('toggle-' + key);
     if(!inputNode) {
         let liNode = document.createElement("li");
-        liNode.innerHTML = '<li class="pros-hide-control"><input type="checkbox" id="toggle-' + key + '">' +
-                            ' <label for="toggle-' + key + '" class="pros-alwaysOn">' +key+ '</label></li>';
+        liNode.className = 'pros-hide-control';
+        liNode.innerHTML = '<input type="checkbox" id="toggle-' + key + '">' +
+                            ' <label for="toggle-' + key + '" class="pros-alwaysOn">' +key+ '</label>';
         listNode.appendChild(liNode);
         inputNode = liNode.querySelector('input');
     }
@@ -126,16 +127,18 @@ function addControl(key, listNode){
 }
 
 // main flow
-let headerSelector = document.querySelector("header > div");
+let headerSelector = document.querySelector("header");
 
 if(headerSelector != null){
-    let cpNode = document.createElement('div');
-    let controlPanelHtml = 'Hide: <ul id="hideControls">' +
+    let cpNode = document.createElement('section');
+    cpNode.className = 'hideControlSection';
+    let controlPanelHtml = 'Hidden posts: <label id="hiddenScore" class="pros-alwaysOn">0</label>. Hide more by selecting topics:' +
+        '<br/><ul id="hideControls">' +
         '<li class="pros-hide-control"><input type="checkbox" id="toggle-replied">' +
         ' <label for="toggle-replied" class="pros-alwaysOn">Replied</label></li>' +
-        '</ul> Hidden posts: <label id="hiddenScore" class="pros-alwaysOn">0</label>';
-    cpNode.innerHTML = '<div style="position: relative; display: block; left: 50%;">' + controlPanelHtml + '</div>';
-    headerSelector.appendChild(cpNode);
+        '</ul>';
+    cpNode.innerHTML = controlPanelHtml;
+    headerSelector.insertAdjacentElement("afterend", cpNode);
 }
 if(isSummaryPage()){
     buildHideable();
@@ -160,7 +163,6 @@ if(targetNode) {
         for (const mutation of mutationList) {
             if (mutation.type === "childList") {
                 mutation.addedNodes.forEach(n => {
-
                     if(n.nodeName.toLowerCase() == "article") {
                         let postCat = getPostCategory(n);
                         if(!to_hide.hasOwnProperty(postCat)){
