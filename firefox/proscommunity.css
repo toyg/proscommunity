@@ -182,17 +182,30 @@ div.lia-message-subject {
     display: inline-block !important;
 }
 
+input.BatchProcessing {
+    order: 4 !important;
+    top: -15px !important;
+    padding: 0; margin: 0 !important; border: 0;
+}
+
+
 #pros-optionstatus {
     padding: 10px;
     font-weight: bold;
 }
 
+/* extension options */
 .pros-autologin {
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
-input.BatchProcessing {
-    order: 4 !important;
-    top: -15px !important;
-    padding: 0; margin: 0 !important; border: 0;
+.pros-subscriptions > ul {
+    font-size: 1.5em;
+    list-style-type: none;
+    margin: 0; padding: 0; border: 0;
+    margin-top: 10px;
+}
+
+.pros-subscriptions > ul > li {
+font-size: 0.8em;
 }

@@ -14,12 +14,19 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "alarms"
   ],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
+  "background": {
+    "scripts": ["proscommunity-bkgd.js"],
+    "persistent": false,
+    "type": "module"
+  },
+
   "content_scripts": [
     {
       "run_at": "document_end",
