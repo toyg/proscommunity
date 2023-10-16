@@ -1,6 +1,6 @@
 {
   "name": "PrOSCommunity",
-  "version": "1.5",
+  "version": "2.0",
   "author": "g.lacava@gmail.com",
   "developer": {
     "name": "Giacomo Lacava",
@@ -15,7 +15,10 @@
   "permissions": [
     "activeTab",
     "storage",
-    "alarms"
+    "alarms",
+    "notifications",
+    "*://community.onestreamsoftware.com/*"
+
   ],
   "options_ui": {
     "page": "options.html",
@@ -45,7 +48,6 @@
         "https://community.onestreamsoftware.com/t5/Moderate/*",
         "https://community.onestreamsoftware.com/t5/Partner-Forum/bd-p/Partner/*",
         "https://community.onestreamsoftware.com/t5/Partners/ct-p/Partner/*"
-
       ],
       "css": [
         "proscommunity.css"
