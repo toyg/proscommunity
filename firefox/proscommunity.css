@@ -198,14 +198,30 @@ input.BatchProcessing {
 .pros-autologin {
     font-size: 1.5em;
 }
-
-.pros-subscriptions > ul {
+.pros-subs-global {
     font-size: 1.5em;
-    list-style-type: none;
+}
+
+.pros-subs-list {
+    font-size: 1em;
     margin: 0; padding: 0; border: 0;
     margin-top: 10px;
+    margin-left: 20px;
+}
+
+.pros-subs-list > ul {
+    font-size: 1em;
+    list-style-type: none;
+    margin: 0; padding: 0; border: 0;
+    margin-top: 5px;
 }
 
 .pros-subs-list > ul > li {
-font-size: 0.8em;
+    font-size: 1em;
+}
+
+.disabled-opt {
+    pointer-events: none !important;
+    user-select: none;
+    opacity: 0.4;
 }
