@@ -53,7 +53,7 @@ section.hideControlSection {
 }
 
 li.pros-hide-control{
-    display: inline;
+    display: inline-block;
     padding: 0 4px;
     margin: 0 1px !important;
     border: 0;
