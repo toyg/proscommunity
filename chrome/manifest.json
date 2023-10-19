@@ -1,17 +1,25 @@
 {
   "name": "PrOSCommunity",
-  "version": "1.6",
+  "version": "2.0",
   "author": "g.lacava@gmail.com",
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
     "activeTab",
     "declarativeContent",
-    "storage"
+    "storage",
+    "alarms",
+    "notifications",
+    "offscreen"
   ],
   "options_page": "options.html",
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "proscommunity-bkgd.js",
+    "type": "module",
+    "host_permissions": ["*://community.onestreamsoftware.com/*"]
   },
   "content_scripts": [
     {

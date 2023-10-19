@@ -5,13 +5,56 @@
     <link rel="stylesheet" type="text/css" href="proscommunity.css"/>
 </head>
 <body>
+
 <div class="pros-autologin">
-    <input type="checkbox" id="pros-autologin">
+    <input type="checkbox" id="pros-autologin" />
     <label for="pros-autologin">
         Log in on page load
     </label>
-    <div id="pros-optionstatus"></div>
+
 </div>
+
+<div class="pros-subs-global">
+    <input type="checkbox" id="pros-monitorEnabled">
+    <label for="pros-monitorEnabled">Notify on new threads</label>
+</div>
+<div id="pros-subs">
+    <div class="pros-subs-list">
+        <div>Get notifications for new threads in:</div>
+        <ul>
+            <li>
+                <input type="checkbox" id="Application-Build" class="pros-subs-subforum">
+                <label for="Application-Build">Application Build</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Workflow-and-Data-Integration" class="pros-subs-subforum">
+                <label for="Workflow-and-Data-Integration">Workflow & Data Integration</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Rules" class="pros-subs-subforum">
+                <label for="Rules">Rules</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Reporting" class="pros-subs-subforum">
+                <label for="Reporting">Reporting</label>
+            </li>
+            <li>
+                <input type="checkbox" id="MarketPlace" class="pros-subs-subforum">
+                <label for="MarketPlace">MarketPlace</label>
+            </li>
+            <li>
+                <input type="checkbox" id="PartnerPlace" class="pros-subs-subforum">
+                <label for="PartnerPlace">PartnerPlace</label>
+            </li>
+            <li>
+                <input type="checkbox" id="OpenPlace" class="pros-subs-subforum">
+                <label for="OpenPlace">OpenPlace</label>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="pros-optionstatus"></div>
+
 <script src="options.js"></script>
 </body>
 </html>
