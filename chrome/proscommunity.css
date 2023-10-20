@@ -73,6 +73,7 @@ li.pros-hide-control > label {
 /* lightly pad articles */
 article.custom-message-tile {
     padding: 10px 4px; border-bottom: 0; }
+
 article.custom-message-tile > div > h3 {
    background-color: #3d65c9;
    padding: 20px;
@@ -195,4 +196,55 @@ input.BatchProcessing {
     order: 4 !important;
     top: -15px !important;
     padding: 0; margin: 0 !important; border: 0;
+}
+
+/* labels */
+div.pros-labels {
+    padding: 0; margin: 0 !important; border: 0;
+    display: inline-block;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+ul.pros-labels {
+    padding: 0; margin: 0 !important; border: 0;
+    display: inline-block;
+    margin-right: 10px !important;
+}
+
+
+ul.pros-labels:before {
+    content: "🔖 ";
+    margin-right: 2px;
+    margin-left: 10px;
+}
+
+ul.pros-labels > li {
+    padding: 0 !important; margin: 0 !important; border: 0;
+    display: inline-block;
+
+}
+ul.pros-labels > li::after {
+    content: ", ";
+    margin-right: 4px;
+}
+
+ul.pros-labels > li:last-child::after {
+    content: "";
+    margin-right: 0px;
+}
+
+aside > div.custom-tile-category > strong > a:before {
+    content: "💬 ";
+
+}
+aside > div.custom-tile-category > strong > span {
+    display: none;
+}
+aside > div.custom-tile-date {
+    margin-left: 10px !important;
+}
+aside > div.custom-tile-date > time:before {
+    content: "📆 ";
+
 }

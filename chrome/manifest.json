@@ -11,6 +11,10 @@
     "notifications",
     "offscreen"
   ],
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["images/loading.gif"]
+  }],
   "options_page": "options.html",
   "options_ui": {
     "page": "options.html",

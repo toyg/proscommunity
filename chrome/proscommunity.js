@@ -37,8 +37,117 @@ function togglePost(node, hideIt){
     }
 }
 
+// labels downloader
+var postFetchMap = {};
+var fetchQueue = [];
+var fetchQueueWait = 4000; // rate-limiter
+function enqueue(url, node){
+    fetchQueue.push({"url": arguments[0], "node": arguments[1]});
+}
+function dequeue(obj){
+    var index = fetchQueue.indexOf(obj);
+    if (index > -1) {
+        fetchQueue.splice(index, 1);
+    }
+}
+// hashcode to keep track of stuff already downloaded
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0, len = str.length; i < len; i++) {
+        let chr = str.charCodeAt(i);
+        hash = (hash << 5) - hash + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+}
+
+var parser = new DOMParser();
+var lastRun = new Date();
+function fetchLabels(job){
+    let url = job.url;
+    let targetNode = job.node;
+    fetch(url).then((t) => {
+        if(t.status != 200){
+            throw new Error(t.status.toString());
+        }
+        return t.text()
+    }).then(html => {
+        let doc = parser.parseFromString(html, "text/html");
+        let lls = doc.querySelectorAll("li.label");
+        let values = [].map.call(lls, (node) => { return node.innerText.trim();});
+        postFetchMap[hashCode(url)] = values;
+        dequeue(job);
+        lastRun = new Date();
+        addLabels(targetNode, values);
+    }).catch(err => {
+        console.log(err);
+        if(err == 429){
+           setTimeout(fetchLabels, fetchQueueWait, job);
+        }
+    });
+}
+
+function addLabels(node, labels){
+    // remove loader
+    node.querySelector("aside > img.pros-loader").remove();
+
+    // check if we have labels at all
+    if(typeof(labels) == "undefined") return;
+    // get URL of board, to be used later
+    let boardUrl = node.querySelector("div.custom-tile-category > strong > a").getAttribute("href");
+    // create the list
+    let labelList = document.createElement("ul");
+    labelList.classList.add("pros-labels");
+    for(label in labels){
+        let li = document.createElement("li");
+        let a = document.createElement("a");
+        a.setAttribute("href", boardUrl + "/label-name/" + encodeURIComponent(labels[label]))
+        a.innerHTML = labels[label];
+        li.appendChild(a);
+        labelList.appendChild(li);
+    }
+    let sep = document.createTextNode(" | ");
+    // at end of line
+
+    let prevDiv = node.querySelector("div.custom-tile-category");
+    prevDiv.insertAdjacentElement('afterend', labelList);
+    prevDiv.parentNode.insertBefore(sep, labelList);
+
+    // at beginning of line
+//    let timeDiv = node.querySelector("div.custom-tile-date");
+//    timeDiv.parentNode.insertBefore(sep, timeDiv);
+//    timeDiv.parentNode.insertBefore(labelList, sep);
+
+}
+
+function createLoader(){
+        let loader = document.createElement("img");
+        loader.setAttribute("src", chrome.runtime.getURL("/images/loading.gif"));
+        loader.classList.add("pros-loader");
+
+//        loader.setAttribute("width", "20");
+        loader.setAttribute("height", "12");
+        return loader;
+}
+
+
 // manipulate node to add our classes and/or hide it
 function modNode(n) {
+    let postLink = n.querySelector("div > h3 > a").getAttribute("href");
+    let urlHash = hashCode(postLink);
+    // if we have labels, place them
+    if(urlHash in postFetchMap) {
+        // add labels
+        addLabels(n, postFetchMap[urlHash].labels);
+    } else if(!fetchQueue.includes(postLink)){
+        // we don't have labels, so we queue a fetch request
+        enqueue(postLink, n);
+        n.querySelector("aside").insertBefore(
+            createLoader(),
+            n.querySelector("div.custom-tile-date")
+        );
+    }
+
     if(n.querySelector("i.custom-thread-solved")) {
         n.classList.add("pros-solved");
     };
@@ -88,9 +197,20 @@ function getPostCategory(post){
 function elaborate() {
     let articles = listPosts();
     articles.forEach(n => {
+    console.log("moddein");
         modNode(n);
     });
+    processQueue();
  }
+ function processQueue(){
+    let delay = 1000;
+    fetchQueue.forEach(job => {
+        console.log(delay);
+        setTimeout(fetchLabels, delay, job);
+        delay += 1000;
+    });
+ }
+
 
 // build list of hideable categories, by looking at available nodes
 function buildHideable(){
@@ -106,6 +226,7 @@ function buildHideable(){
 
 // build control to hide/show a category
 function addControl(key, listNode){
+    if(listNode == null) return;
     let inputNode = document.getElementById('toggle-' + key);
     if(!inputNode) {
         let liNode = document.createElement("li");
@@ -184,6 +305,7 @@ if(targetNode) {
                 list.insertBefore(repl, list.children[0]);
             }
         }
+        processQueue();
     };
 
     // Create an observer instance linked to the callback function
