@@ -52,7 +52,6 @@ async function main(options) {
 // hook execution to receiving messages
 chrome.runtime.onMessage.addListener(async (msg) => {
     let options = JSON.parse(msg);
-    //console.log(options);
     switch(options.action){
         case "PING":
             chrome.runtime.sendMessage(JSON.stringify({"action": "PONG"}));

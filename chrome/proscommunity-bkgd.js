@@ -65,7 +65,6 @@ if(isMonitorEnabled == true) {
         chrome.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
             refreshOptions(options);
             if(isMonitorEnabled){
-            // console.log("sending message ", lastChecked, subsList);
                 // send message to offscreen page to trigger fetching
                 chrome.runtime.sendMessage(JSON.stringify(
                     {"action": "RUN",
@@ -84,7 +83,6 @@ if(isMonitorEnabled == true) {
 // if receiving a message, fire a notification
 chrome.runtime.onMessage.addListener((msg) => {
     let options = JSON.parse(msg);
-    //console.log(options);
     switch(options.action){
         case "PONG":
             // ignore

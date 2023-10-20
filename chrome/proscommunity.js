@@ -62,7 +62,6 @@ function hashCode(str) {
 }
 
 var parser = new DOMParser();
-var lastRun = new Date();
 function fetchLabels(job){
     let url = job.url;
     let targetNode = job.node;
@@ -77,12 +76,12 @@ function fetchLabels(job){
         let values = [].map.call(lls, (node) => { return node.innerText.trim();});
         postFetchMap[hashCode(url)] = values;
         dequeue(job);
-        lastRun = new Date();
         addLabels(targetNode, values);
     }).catch(err => {
-        console.log(err);
         if(err == 429){
            setTimeout(fetchLabels, fetchQueueWait, job);
+        } else {
+            console.log(err);
         }
     });
 }
@@ -120,16 +119,14 @@ function addLabels(node, labels){
 
 }
 
+// loader for label-fetching
 function createLoader(){
         let loader = document.createElement("img");
         loader.setAttribute("src", chrome.runtime.getURL("/images/loading.gif"));
         loader.classList.add("pros-loader");
-
-//        loader.setAttribute("width", "20");
         loader.setAttribute("height", "12");
         return loader;
 }
-
 
 // manipulate node to add our classes and/or hide it
 function modNode(n) {
@@ -197,20 +194,19 @@ function getPostCategory(post){
 function elaborate() {
     let articles = listPosts();
     articles.forEach(n => {
-    console.log("moddein");
         modNode(n);
     });
     processQueue();
  }
+
+ // process queue of label-fetching jobs
  function processQueue(){
     let delay = 1000;
     fetchQueue.forEach(job => {
-        console.log(delay);
         setTimeout(fetchLabels, delay, job);
         delay += 1000;
     });
  }
-
 
 // build list of hideable categories, by looking at available nodes
 function buildHideable(){
