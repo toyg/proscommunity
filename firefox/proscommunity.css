@@ -194,12 +194,37 @@ input.BatchProcessing {
     font-weight: bold;
 }
 
-/* extension options */
-.pros-autologin {
-    font-size: 1.5em;
+/* options page */
+body.options {
+    margin-left: -6px;
+    font-size: 1.3em;
+    border-top: 1px solid grey;
+    margin-left: 0px !important;
 }
-.pros-subs-global {
-    font-size: 1.5em;
+
+.pros-option-help {
+    margin : 0 !important;
+    padding-top: 2px !important;
+    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.476);
+    font-size: 15px;
+}
+
+.pros-autologin {
+    margin-top: 12px !important;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-bottom: 16px;
+
+}
+
+.pros-autologin, .pros-subs-global {
+    font-size: 15px;
+    padding-top: 16px;
+}
+
+.pros-subs {
+    margin: 0 !important; padding: 0 !important; border: 0;
+
 }
 
 .pros-subs-list {
@@ -212,12 +237,13 @@ input.BatchProcessing {
 .pros-subs-list > ul {
     font-size: 1em;
     list-style-type: none;
-    margin: 0; padding: 0; border: 0;
+    margin: 0 !important; padding: 0 !important; border: 0;
     margin-top: 5px;
 }
 
 .pros-subs-list > ul > li {
-    font-size: 1em;
+    font-size: 14px;
+    list-style: none;
 }
 
 .disabled-opt {
