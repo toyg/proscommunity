@@ -16,20 +16,20 @@
     "activeTab",
     "storage",
     "alarms",
-    "notifications",
-    "*://community.onestreamsoftware.com/*"
-
+    "notifications"
   ],
+    "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["images/loading.gif"]
+  }],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
   "background": {
     "scripts": ["proscommunity-bkgd.js"],
-    "persistent": false,
-    "type": "module"
+    "host_permissions": ["*://community.onestreamsoftware.com/*"]
   },
-
   "content_scripts": [
     {
       "run_at": "document_end",
@@ -67,5 +67,5 @@
     "48": "images/pros48.png",
     "128": "images/pros128.png"
   },
-  "manifest_version": 2
+  "manifest_version": 3
 }
