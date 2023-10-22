@@ -1,4 +1,6 @@
-console.log("[PROSCommunity] Starting up...");
+const prjCode = "PrOSCommunity";
+
+console.log(`[${prjCode}] Booting...`);
 
 // setup offscreen page to use DOM Parser (screw you, Google)
 chrome.offscreen.createDocument({
@@ -56,14 +58,16 @@ await initMonitor;
 
 // Check every x minutes
 chrome.alarms.create({delayInMinutes: 1, periodInMinutes: 30});
-console.log("[PROSCommunity] monitor enabled: " + isMonitorEnabled);
-console.log("[PROSCommunity] monitor last checked: " + lastChecked);
+console.log(`[${prjCode}] monitor enabled: ${isMonitorEnabled}`);
+console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
 
-if(isMonitorEnabled == true) {
+//if(isMonitorEnabled == true) {
     chrome.alarms.onAlarm.addListener(() => {
         // we always refresh options before actually fetching and filtering
         chrome.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
             refreshOptions(options);
+            console.log(`[${prjCode}] monitor enabled: ${isMonitorEnabled}`);
+            console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
             if(isMonitorEnabled){
                 // send message to offscreen page to trigger fetching
                 chrome.runtime.sendMessage(JSON.stringify(
@@ -76,7 +80,7 @@ if(isMonitorEnabled == true) {
             }
         })
     });
-}
+//}
 
 }
 
