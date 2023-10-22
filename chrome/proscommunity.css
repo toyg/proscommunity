@@ -188,14 +188,66 @@ div.lia-message-subject {
     font-weight: bold;
 }
 
-.pros-autologin {
-    font-size: 2em;
-}
-
 input.BatchProcessing {
     order: 4 !important;
     top: -15px !important;
     padding: 0; margin: 0 !important; border: 0;
+}
+
+/* options page */
+body.pros-options {
+    font-family: "Lucida Grande", "Arial", "Helvetica", "sans-serif";
+    font-size: 1em;
+    padding: 12px;
+    padding-top: 0px;
+
+}
+
+.pros-option-help {
+    margin : 0 !important;
+    margin-top: 4px !important;
+    padding-top: 4px !important;
+    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.4);
+    color-scheme: light dark;
+    font-size: 0.96em;
+}
+.pros-autologin {
+    margin-top: 12px !important;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-bottom: 16px;
+
+}
+
+.pros-autologin, .pros-subs-global {
+    font-size: 15px;
+    padding-top: 16px;
+}
+
+.pros-subs {
+    margin: 0 !important; padding: 0 !important; border: 0;
+
+}
+
+.pros-subs-list {
+    font-size: 1em;
+    margin: 0; padding: 0; border: 0;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.pros-subs-list > div {
+    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.476);
+    font-size: 0.9em;
+}
+.pros-subs-list > ul {
+    font-size: 1em;
+    list-style-type: none;
+    margin: 0 !important; padding: 0 !important; border: 0;
+    margin-top: 5px;
+}
+.pros-subs-list > ul > li {
+    font-size: 14px;
+    list-style: none;
 }
 
 /* labels */

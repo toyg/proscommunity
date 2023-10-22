@@ -195,18 +195,20 @@ input.BatchProcessing {
 }
 
 /* options page */
-body.options {
+body.pros-options {
+    font-family: "Lucida Grande", "Arial", "Helvetica", "sans-serif";
     margin-left: -6px;
-    font-size: 1.3em;
-    border-top: 1px solid grey;
+    font-size: 1em;
     margin-left: 0px !important;
 }
 
 .pros-option-help {
     margin : 0 !important;
-    padding-top: 2px !important;
-    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.476);
-    font-size: 15px;
+    margin-top: 4px !important;
+    padding-top: 4px !important;
+    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.4);
+    color-scheme: light dark;
+    font-size: 0.96em;
 }
 
 .pros-autologin {
@@ -233,7 +235,10 @@ body.options {
     margin-top: 10px;
     margin-left: 20px;
 }
-
+.pros-subs-list > div {
+    color: color(srgb 0.0823529 0.0784314 0.101961 / 0.476);
+    font-size: 0.9em;
+}
 .pros-subs-list > ul {
     font-size: 1em;
     list-style-type: none;
@@ -250,4 +255,54 @@ body.options {
     pointer-events: none !important;
     user-select: none;
     opacity: 0.4;
+}
+/* labels */
+div.pros-labels {
+    padding: 0; margin: 0 !important; border: 0;
+    display: inline-block;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+ul.pros-labels {
+    padding: 0; margin: 0 !important; border: 0;
+    display: inline-block;
+    margin-right: 10px !important;
+}
+
+
+ul.pros-labels:before {
+    content: "🔖 ";
+    margin-right: 2px;
+    margin-left: 10px;
+}
+
+ul.pros-labels > li {
+    padding: 0 !important; margin: 0 !important; border: 0;
+    display: inline-block;
+
+}
+ul.pros-labels > li::after {
+    content: ", ";
+    margin-right: 4px;
+}
+
+ul.pros-labels > li:last-child::after {
+    content: "";
+    margin-right: 0px;
+}
+
+aside > div.custom-tile-category > strong > a:before {
+    content: "💬 ";
+
+}
+aside > div.custom-tile-category > strong > span {
+    display: none;
+}
+aside > div.custom-tile-date {
+    margin-left: 10px !important;
+}
+aside > div.custom-tile-date > time:before {
+    content: "📆 ";
+
 }

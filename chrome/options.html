@@ -4,23 +4,28 @@
     <title>PrOSCommunity Options</title>
     <link rel="stylesheet" type="text/css" href="proscommunity.css"/>
 </head>
-<body>
-
+<body class="pros-options">
 <div class="pros-autologin">
     <input type="checkbox" id="pros-autologin" />
     <label for="pros-autologin">
         Log in on page load
     </label>
-
+    <div class="pros-option-help">
+        When enabled, it will trigger the log-in process
+        as soon as you navigate to OneCommunity (if not logged-in already).
+    </div>
 </div>
-
 <div class="pros-subs-global">
     <input type="checkbox" id="pros-monitorEnabled">
     <label for="pros-monitorEnabled">Notify on new threads</label>
+    <div class="pros-option-help">When enabled, it will fire notifications
+        when new questions are detected on the boards selected below.
+        Checking will happen every 30 minutes.
+    </div>
 </div>
 <div id="pros-subs">
     <div class="pros-subs-list">
-        <div>Get notifications for new threads in:</div>
+        <div>Boards to monitor:</div>
         <ul>
             <li>
                 <input type="checkbox" id="Application-Build" class="pros-subs-subforum">
