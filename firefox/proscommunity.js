@@ -2,8 +2,9 @@ const prjCode = "PrOSCommunity";
 
 const baseUrl = "https://community.onestreamsoftware.com";
 
-// autologin support
+//browser.storage.local.clear();
 
+// autologin support
 browser.storage.sync.get({ autologin: false },
     function(items) {
         if(items.autologin == true){
@@ -69,25 +70,49 @@ var parser = new DOMParser();
 function fetchLabels(job){
     let url = job.url;
     let targetNode = job.node;
-    fetch(url).then((t) => {
-        if(t.status != 200){
-            throw new Error(t.status.toString());
+    // define cache key and look it up
+    let cacheId = "cache_" + hashCode(job.url);
+    browser.storage.local.get(cacheId).then(
+        (items) => {
+            // returned "items" is always an object,
+            // but without properties if key not found
+            if(items.hasOwnProperty(cacheId)){
+                // found values in cache
+                addLabels(targetNode, JSON.parse(items[cacheId]));
+            } else {
+                // fetch remotely
+                fetch(url).then((t) => {
+                    if(t.status != 200){
+                        throw new Error(t.status.toString());
+                    }
+                    return t.text()
+                }).then(html => {
+                    let doc = parser.parseFromString(html, "text/html");
+                    let lls = doc.querySelectorAll("li.label");
+                    let values = [].map.call(lls, (node) => {
+                        return node.innerText.trim();});
+                    // set in page cache (this could be in storage.session maybe...)
+                    postFetchMap[hashCode(url)] = values;
+                    // set in local storage to use on page reload
+                    browser.storage.local.set(
+                        {[`${cacheId}`]: JSON.stringify(values)});
+                    dequeue(job);
+                    addLabels(targetNode, values);
+                }).catch(err => {
+                    if(err == 429){
+                        // rate limited, try again
+                       setTimeout(fetchLabels, fetchQueueWait, job);
+                    } else {
+                       console.log(`[${prjCode}] Http error fetching labels`, err);
+                    }
+                });
+            }
+        },
+        (error) => {
+            console.log(`[${prjCode}] ERROR accessing local storage`, error);
         }
-        return t.text()
-    }).then(html => {
-        let doc = parser.parseFromString(html, "text/html");
-        let lls = doc.querySelectorAll("li.label");
-        let values = [].map.call(lls, (node) => { return node.innerText.trim();});
-        postFetchMap[hashCode(url)] = values;
-        dequeue(job);
-        addLabels(targetNode, values);
-    }).catch(err => {
-        if(err == 429){
-           setTimeout(fetchLabels, fetchQueueWait, job);
-        } else {
-            console.log(err);
-        }
-    });
+    )
+
 }
 
 function addLabels(node, labels){
