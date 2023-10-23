@@ -1,5 +1,7 @@
 const prjCode = "PrOSCommunity";
 
+const baseUrl = "https://community.onestreamsoftware.com";
+
 // autologin support
 
 browser.storage.sync.get({ autologin: false },
@@ -138,6 +140,7 @@ function createLoader(){
 // manipulate node to add our classes and/or hide it
 function modNode(n) {
     let postLink = n.querySelector("div > h3 > a").getAttribute("href");
+    if(postLink.startsWith("/")) postLink = baseUrl + postLink;
     let urlHash = hashCode(postLink);
     // if we have labels, place them
     if(urlHash in postFetchMap) {
