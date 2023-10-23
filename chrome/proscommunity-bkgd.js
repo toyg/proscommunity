@@ -40,11 +40,15 @@ const initLastChecked = chrome.storage.sync.get(["lastChecked"]).then((options) 
 // retrieve options
 function refreshOptions(options){
     isMonitorEnabled = options.monitorEnabled;
-    let subsObj = JSON.parse(options.subs);
-    // subsObj -> {"Rules": true, ...}
-    // looping through properties with .entries returns arrays: [ ["Rules", true], ...]
-    // so we filter the enabled ones, then retrieve their names and attach each of them to baseUrl
-    subsList = Object.entries(subsObj).filter(x => {return x[1]}).map(x => {return baseUrl + x[0]});
+    try {
+        let subsObj = JSON.parse(options.subs);
+        // subsObj -> {"Rules": true, ...}
+        // looping through properties with .entries returns arrays: [ ["Rules", true], ...]
+        // so we filter the enabled ones, then retrieve their names and attach each of them to baseUrl
+        subsList = Object.entries(subsObj).filter(x => {return x[1]}).map(x => {return baseUrl + x[0]});
+   } catch(err){
+
+   }
 }
 const initMonitor = chrome.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
    refreshOptions(options);
@@ -86,7 +90,12 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
 
 // if receiving a message, fire a notification
 chrome.runtime.onMessage.addListener((msg) => {
-    let options = JSON.parse(msg);
+    let options = {}
+    try{
+        options = JSON.parse(msg);
+    }catch(err) {
+
+    }
     switch(options.action){
         case "PONG":
             // ignore
@@ -108,6 +117,7 @@ chrome.runtime.onMessage.addListener((msg) => {
         default:
             console.log("weird message", msg);
     };
+
 })
 
 run();

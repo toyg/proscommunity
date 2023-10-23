@@ -88,7 +88,8 @@ function fetchLabels(job){
 
 function addLabels(node, labels){
     // remove loader
-    node.querySelector("aside > img.pros-loader").remove();
+    let loader = node.querySelector("aside > img.pros-loader");
+    if(loader != undefined) loader.remove();
 
     // check if we have labels at all
     if(typeof(labels) == "undefined") return;

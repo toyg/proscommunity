@@ -90,7 +90,8 @@ function fetchLabels(job){
 
 function addLabels(node, labels){
     // remove loader
-    node.querySelector("aside > img.pros-loader").remove();
+    let loader = node.querySelector("aside > img.pros-loader");
+    if(loader != undefined) loader.remove();
 
     // check if we have labels at all
     if(typeof(labels) == "undefined") return;
@@ -103,7 +104,7 @@ function addLabels(node, labels){
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.setAttribute("href", boardUrl + "/label-name/" + encodeURIComponent(labels[label]))
-        a.innerHTML = labels[label];
+        a.appendChild(document.createTextNode(labels[label]));
         li.appendChild(a);
         labelList.appendChild(li);
     }
