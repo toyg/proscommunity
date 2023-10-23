@@ -28,18 +28,14 @@ const rssUrl = "https://community.onestreamsoftware.com/otqon28567/rss/Category?
 //chrome.storage.sync.set({lastChecked: "2022-10-16T17:39:10Z"});
 // END DEBUG
 
-// retrieve last-checked timestamp
-const initLastChecked = chrome.storage.sync.get(["lastChecked"]).then((options) => {
-    try{
-        let lcTimestamp = new Date(Date.parse(options.lastChecked));
-        if(lcTimestamp.toString() != "Invalid Date") lastChecked = lcTimestamp;
-    }catch(error){}
-    }
-);
 
 // retrieve options
 function refreshOptions(options){
     isMonitorEnabled = options.monitorEnabled;
+    try{
+        let lcTimestamp = new Date(Date.parse(options.lastChecked));
+        if(lcTimestamp.toString() != "Invalid Date") lastChecked = lcTimestamp;
+    } catch(error){}
     try {
         let subsObj = JSON.parse(options.subs);
         // subsObj -> {"Rules": true, ...}
@@ -50,12 +46,11 @@ function refreshOptions(options){
 
    }
 }
-const initMonitor = chrome.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
+const initMonitor = chrome.storage.sync.get(["monitorEnabled", "subs", "lastChecked"]).then((options) => {
    refreshOptions(options);
 });
 
 // init
-await initLastChecked;
 await initMonitor;
 
 /* create an alarm, then attach our recurring action to it */
@@ -68,7 +63,7 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
 //if(isMonitorEnabled == true) {
     chrome.alarms.onAlarm.addListener(() => {
         // we always refresh options before actually fetching and filtering
-        chrome.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
+        chrome.storage.sync.get(["monitorEnabled", "subs", "lastChecked"]).then((options) => {
             refreshOptions(options);
             console.log(`[${prjCode}] monitor enabled: ${isMonitorEnabled}`);
             console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
@@ -80,7 +75,8 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
                     "subs": subsList}
                 ));
                 // update lastChecked
-                chrome.storage.sync.set({lastChecked: Date().toString()});
+                let now = new Date();
+                chrome.storage.sync.set({lastChecked: now.toString()});
             }
         })
     });

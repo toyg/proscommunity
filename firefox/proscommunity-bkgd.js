@@ -14,17 +14,13 @@ const rssUrl = "https://community.onestreamsoftware.com/otqon28567/rss/Category?
 //browser.storage.sync.set({lastChecked: new Date(Date.parse("2022-10-16T17:39:10Z"))});
 //// END DEBUG
 
-// retrieve last-checked timestamp
-const initLastChecked = browser.storage.sync.get(["lastChecked"]).then((options) => {
-try{
-  let lcTimestamp = new Date(Date.parse(options.lastChecked));
-  if(lcTimestamp.toString() != "Invalid Date") lastChecked = lcTimestamp;
-  }catch(error){}
-});
-
 // retrieve options
 function refreshOptions(options){
     isMonitorEnabled = options.monitorEnabled;
+    try{
+        let lcTimestamp = new Date(Date.parse(options.lastChecked));
+        if(lcTimestamp.toString() != "Invalid Date") lastChecked = lcTimestamp;
+    } catch(error){}
     try {
 //        console.log(options.subs);
         let subsObj = JSON.parse(options.subs);
@@ -36,12 +32,11 @@ function refreshOptions(options){
         // invalid subs, ignore
     }
 }
-const initMonitor = browser.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
+const initMonitor = browser.storage.sync.get(["monitorEnabled", "subs", "lastChecked"]).then((options) => {
    refreshOptions(options);
 });
 
 // init
-await initLastChecked;
 await initMonitor;
 
 /* create an alarm, then attach our recurring action to it */
@@ -56,7 +51,7 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
 //if(isMonitorEnabled == true) {
  browser.alarms.onAlarm.addListener(() => {
     // we always refresh options before actually fetching and filtering
-    browser.storage.sync.get(["monitorEnabled", "subs"]).then((options) => {
+    browser.storage.sync.get(["monitorEnabled", "subs", "lastChecked"]).then((options) => {
         refreshOptions(options);
         console.log(`[${prjCode}] monitor enabled: ${isMonitorEnabled}`);
         console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
@@ -102,7 +97,8 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
                         }
                     }
                 }
-                browser.storage.sync.set({lastChecked: Date().toString()})
+                let now = new Date();
+                browser.storage.sync.set({lastChecked: now.toString()})
             })
             .catch(function(err) {
                 console.log('Failed to fetch page: ', err);
