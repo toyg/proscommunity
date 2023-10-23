@@ -93,6 +93,10 @@ function addLabels(node, labels){
 
     // check if we have labels at all
     if(typeof(labels) == "undefined") return;
+
+    // avoid doing the work again
+    if(node.querySelector("ul.pros-labels") != undefined) return;
+
     // get URL of board, to be used later
     let boardUrl = node.querySelector("div.custom-tile-category > strong > a").getAttribute("href");
     // create the list
