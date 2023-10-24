@@ -41,6 +41,44 @@ function togglePost(node, hideIt){
     }
 }
 
+function getMappedClassForBoard(msgUrl){
+    let board = msgUrl.split("/")[2];
+    switch(board){
+        case "Application-Build":
+            return "appbuild";
+        case "Workflow-and-Data-Integration":
+            return "wfdi";
+        case "Rules":
+            return "rules";
+        case "Reporting":
+            return "reporting";
+        case "French-Language-Forum":
+            return "french";
+        case "MarketPlace":
+            return "marketplace";
+        case "OpenPlace":
+            return "openplace";
+        case "PartnerPlace":
+            return "partnerplace";
+        case "Financial-Close-Consolidation":
+            return "ideaplatform";
+            //return "ideafcc";
+        case "Planning-Analysis":
+            return "ideaplatform";
+            //return "ideaplan";
+        case "Advanced-Analytics":
+            return "ideaplatform";
+            //return "ideaadv";
+        case "Productivity":
+            return "ideaplatform";
+            //return "ideaprod";
+        case "Platform":
+            return "ideaplatform";
+        default:
+            return "posticondefault";
+    }
+    
+}
 
 // labels downloader
 var postFetchMap = {};
@@ -179,6 +217,12 @@ function modNode(n) {
             n.querySelector("div.custom-tile-date")
         );
     }
+
+    // icon stuff
+    let postUrl = n.querySelector("h3 > a").getAttribute("href");
+    n.classList.add(getMappedClassForBoard(postUrl));
+
+    // general highlighting
     if(n.querySelector("i.custom-thread-solved")) {
         n.classList.add("pros-solved");
     };
