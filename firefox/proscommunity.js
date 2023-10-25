@@ -390,3 +390,28 @@ if(targetNode) {
     // Later, you can stop observing
     //observer.disconnect();
 }
+
+/* generic changes to all pages */
+
+// compact top banner
+let topLogo = document.querySelector("div.logo-icons-left")
+topLogo.remove()
+let target = document.querySelector("div.logo-icons-top-header")
+target.insertBefore(topLogo, target.firstChild)
+
+// move burger menu when collapsed already
+function compactTopBar (e){
+    let burger = document.querySelector("button.lia-slide-menu-trigger");
+    let topBurger = document.querySelector("div.lia-slide-out-nav-menu");
+    // first, move the burger icon
+    burger.remove();
+    document.querySelector("div.logo-icons-right").appendChild(burger);
+    // then, check if it has to be visible or not
+    if(topBurger.checkVisibility()){
+        burger.style.display = "inline-block";
+    } else {
+        burger.style.display = "none";
+    }
+}
+compactTopBar();
+addEventListener("resize", compactTopBar);
