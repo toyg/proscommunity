@@ -296,6 +296,17 @@ div.custom-message-list > section > header > h2 {
 div.lia-quilt-row-message-header-top { display: none !important;}
 div.lia-quilt-row-message-header-main { display: none !important;}
 div.lia-quilt-row-message-header-bottom { padding: 0 0 8px 0 !important;}
+/* private msgs */
+.lia-quilt-row-header-hero { display: none !important; }
+div.lia-quilt-layout-custom-community-header { margin: 0 !important;}
+div.lia-private-notes-page { height: 100% !important;}
+div.lia-quilt-row-main { height: 100% !important;}
+#notesthreadlist > div.lia-thread-top { padding: 0 !important;}
+div.lia-note-subject { font-size: 16px !important;}
+#notebodydisplay {font-size: 15px !important; }
+#lia-conversation-context { padding: 0 !important;}
+/* move post */
+.lia-page-header { padding: 0 !important; display: none !important;}
 /* scale down message title */
 div.lia-message-subject {
     font-size: 20px !important;

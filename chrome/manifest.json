@@ -1,6 +1,6 @@
 {
   "name": "PrOSCommunity",
-  "version": "2.2",
+  "version": "2.3",
   "author": "g.lacava@gmail.com",
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
@@ -41,8 +41,10 @@
         "https://community.onestreamsoftware.com/t5/French-Language-Forum/*",
         "https://community.onestreamsoftware.com/t5/Solution-Exchange/*",
         "https://community.onestreamsoftware.com/t5/Moderate/*",
-        "https://community.onestreamsoftware.com/t5/Partner-Forum/bd-p/Partner/*",
-        "https://community.onestreamsoftware.com/t5/Partners/ct-p/Partner/*"
+        "https://community.onestreamsoftware.com/t5/Partner-Forum/*",
+        "https://community.onestreamsoftware.com/t5/Partners/*",
+        "https://community.onestreamsoftware.com/t5/notes/*",
+        "https://community.onestreamsoftware.com/t5/forums/*"
 
       ],
       "css": [
