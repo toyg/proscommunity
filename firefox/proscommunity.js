@@ -300,6 +300,7 @@ function buildHideable(){
 
 // build control to hide/show a category
 function addControl(key, listNode){
+    if(!listNode) return;
     let inputNode = document.getElementById('toggle-' + key);
     if(!inputNode) {
         let liNode = document.createElement("li");
