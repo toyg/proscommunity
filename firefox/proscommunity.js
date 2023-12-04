@@ -85,13 +85,24 @@ var postFetchMap = {};
 var fetchQueue = [];
 var fetchQueueWait = 4000; // rate-limiter
 function enqueue(url, node){
-    fetchQueue.push({"url": arguments[0], "node": arguments[1]});
+    let obj = {"url": arguments[0], "node": arguments[1]};
+    if(!alreadyInQueue(url)){
+        fetchQueue.push(obj);
+    }
 }
 function dequeue(obj){
     var index = fetchQueue.indexOf(obj);
     if (index > -1) {
         fetchQueue.splice(index, 1);
     }
+}
+function alreadyInQueue(url){
+    for(let i = 0; i <= fetchQueue.length; i++){
+        if(fetchQueue[i] != undefined){
+            if(fetchQueue[i].url == url) return true;
+        }
+    }
+    return false;
 }
 // hashcode to keep track of stuff already downloaded
 function hashCode(str) {
@@ -209,7 +220,7 @@ function modNode(n) {
     if(urlHash in postFetchMap) {
         // add labels
         addLabels(n, postFetchMap[urlHash].labels);
-    } else if(!fetchQueue.includes(postLink)){
+    } else if(!alreadyInQueue(postLink)){
         // we don't have labels, so we queue a fetch request
         enqueue(postLink, n);
         n.querySelector("aside").insertBefore(
