@@ -39,18 +39,68 @@ function togglePost(node, hideIt){
     }
 }
 
+function getMappedClassForBoard(msgUrl){
+    let board = msgUrl.split("/")[2];
+    switch(board){
+        case "Application-Build":
+            return "appbuild";
+        case "Workflow-and-Data-Integration":
+            return "wfdi";
+        case "Rules":
+            return "rules";
+        case "Reporting":
+            return "reporting";
+        case "French-Language-Forum":
+            return "french";
+        case "MarketPlace":
+            return "marketplace";
+        case "OpenPlace":
+            return "openplace";
+        case "PartnerPlace":
+            return "partnerplace";
+        case "Financial-Close-Consolidation":
+            return "ideaplatform";
+            //return "ideafcc";
+        case "Planning-Analysis":
+            return "ideaplatform";
+            //return "ideaplan";
+        case "Advanced-Analytics":
+            return "ideaplatform";
+            //return "ideaadv";
+        case "Productivity":
+            return "ideaplatform";
+            //return "ideaprod";
+        case "Platform":
+            return "ideaplatform";
+        default:
+            return "posticondefault";
+    }
+
+}
+
 // labels downloader
 var postFetchMap = {};
 var fetchQueue = [];
 var fetchQueueWait = 4000; // rate-limiter
 function enqueue(url, node){
-    fetchQueue.push({"url": arguments[0], "node": arguments[1]});
+    let obj = {"url": arguments[0], "node": arguments[1]};
+    if(!alreadyInQueue(url)){
+        fetchQueue.push(obj);
+    }
 }
 function dequeue(obj){
     var index = fetchQueue.indexOf(obj);
     if (index > -1) {
         fetchQueue.splice(index, 1);
     }
+}
+function alreadyInQueue(url){
+    for(let i = 0; i <= fetchQueue.length; i++){
+        if(fetchQueue[i] != undefined){
+            if(fetchQueue[i].url == url) return true;
+        }
+    }
+    return false;
 }
 // hashcode to keep track of stuff already downloaded
 function hashCode(str) {
@@ -117,7 +167,7 @@ function addLabels(node, labels){
     if(loader != undefined) loader.remove();
 
     // check if we have labels at all
-    if(typeof(labels) == "undefined") return;
+    if((typeof(labels) == "undefined") || labels.length == 0) return;
 
     // avoid doing the work again
     if(node.querySelector("ul.pros-labels") != undefined) return;
@@ -131,7 +181,7 @@ function addLabels(node, labels){
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.setAttribute("href", boardUrl + "/label-name/" + encodeURIComponent(labels[label]))
-        a.innerHTML = labels[label];
+        a.appendChild(document.createTextNode(labels[label]));
         li.appendChild(a);
         labelList.appendChild(li);
     }
@@ -167,7 +217,7 @@ function modNode(n) {
     if(urlHash in postFetchMap) {
         // add labels
         addLabels(n, postFetchMap[urlHash].labels);
-    } else if(!fetchQueue.includes(postLink)){
+    } else if(!alreadyInQueue(postLink)){
         // we don't have labels, so we queue a fetch request
         enqueue(postLink, n);
         n.querySelector("aside").insertBefore(
@@ -176,6 +226,11 @@ function modNode(n) {
         );
     }
 
+    // icon stuff
+    let postUrl = n.querySelector("h3 > a").getAttribute("href");
+    n.classList.add(getMappedClassForBoard(postUrl));
+
+    // general highlighting
     if(n.querySelector("i.custom-thread-solved")) {
         n.classList.add("pros-solved");
     };
@@ -253,7 +308,7 @@ function buildHideable(){
 
 // build control to hide/show a category
 function addControl(key, listNode){
-    if(listNode == null) return;
+    if(!listNode) return;
     let inputNode = document.getElementById('toggle-' + key);
     if(!inputNode) {
         let liNode = document.createElement("li");
@@ -344,6 +399,8 @@ if(targetNode) {
     // Later, you can stop observing
     //observer.disconnect();
 }
+
+/* generic changes to all pages */
 
 // compact top banner
 let topLogo = document.querySelector("div.logo-icons-left")
