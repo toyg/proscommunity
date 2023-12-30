@@ -1,6 +1,7 @@
 const prjCode = "PrOSCommunity";
 
 const baseUrl = "https://community.onestreamsoftware.com";
+const filteredBaseUrl = baseUrl + "/t5/forums/filteredbylabelpage/board-id/"
 
 //browser.storage.local.clear();
 
@@ -177,13 +178,15 @@ function addLabels(node, labels){
 
     // get URL of board, to be used later
     let boardUrl = node.querySelector("div.custom-tile-category > strong > a").getAttribute("href");
+    let boardName = boardUrl.split("/").pop();
+
     // create the list
     let labelList = document.createElement("ul");
     labelList.classList.add("pros-labels");
     for(label in labels){
         let li = document.createElement("li");
         let a = document.createElement("a");
-        a.setAttribute("href", boardUrl + "/label-name/" + encodeURIComponent(labels[label]))
+        a.setAttribute("href", filteredBaseUrl + boardName + "/label-name/" + encodeURIComponent(labels[label]))
         a.appendChild(document.createTextNode(labels[label]));
         li.appendChild(a);
         labelList.appendChild(li);
