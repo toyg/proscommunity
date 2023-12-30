@@ -170,7 +170,7 @@ function addLabels(node, labels){
     if(loader != undefined) loader.remove();
 
     // check if we have labels at all
-    if(typeof(labels) == "undefined") return;
+    if((typeof(labels) == "undefined") || labels.length == 0) return;
 
     // avoid doing the work again
     if(node.querySelector("ul.pros-labels") != undefined) return;
