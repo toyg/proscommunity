@@ -284,6 +284,7 @@ div.parent-header-div {padding: 0 !important;}
 /* compact top menu. Hidden menus need to be pulled up */
 div.custom-community-header-navigation-v2 > ul > li > a { padding: 5px 15px;}
 ul.custom-community-header-sub-navigation { top: 30px !important; }
+
 /* hidden */
 div.lia-panel:nth-child(2) > div:nth-child(1) { display: none; }
 #custom-loader > section:nth-child(1) > header:nth-child(1) > h2:nth-child(1) { display: none; }
