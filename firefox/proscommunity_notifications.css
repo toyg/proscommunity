@@ -1,0 +1,80 @@
+/* compact rows */
+.lia-quilt-layout-notification-feed-item {
+    padding: 4px 0px !important;
+}
+.lia-quilt-notification-feed-item {
+    min-height: 1px !important;
+}
+span.lia-img-icon-forum-thread {
+    height: 20px !important;
+    width: 19px !important;
+}
+div.lia-notification-feed-icon {
+    max-height: 19px !important;
+    max-width: 19px !important;
+    min-height: 19px !important;
+    min-width: 19px !important;
+    line-height: 1 !important;
+}
+li.lia-notification-feed-item {
+    line-height: 1 !important;
+    padding: 4px 8px !important;
+}
+.lia-notification-feed-icon .lia-fa-icon:before {
+    font-size: 19px !important;
+    line-height: 19px !important;
+}
+.lia-notification-mentions .lia-notification-feed-icon:before {
+    font-size: 19px !important;
+    max-height: 19px !important;
+    max-width: 19px !important;
+    min-height: 19px !important;
+    min-width: 19px !important;
+    line-height: 1 !important;
+}
+.lia-notification-feed-icon:before {
+    font-size: 19px !important;
+}
+.lia-quilt-column-01 {
+    min-width: 19px;
+    padding-right: 1px !important;
+}
+.lia-quilt-column-right {
+    padding-left: 38px !important;
+}
+.lia-component-common-widget-link { padding-left: 6px;}
+div.BreadCrumb > ul {
+    padding-bottom: 0 !important;
+}
+/* add colors */
+.pros-idea {
+    background: rgb(108, 114, 137);
+    background: linear-gradient(180deg, rgba(108, 114, 137, 0.5) 0%, rgba(255,255,255,1) 35%);
+}
+.pros-kudos {
+    background: rgb(178,217,232);
+    background: linear-gradient(180deg, rgba(178,217,232,0.5) 0%, rgba(255,255,255,1) 35%);
+}
+.pros-reply {
+    background: rgb(237,104,9);
+    background: linear-gradient(180deg, rgba(237,104,9,0.2) 0%, rgba(255,255,255,1) 35%);
+}
+.pros-mentions {
+    background: rgb(247,255,155);
+    background: linear-gradient(180deg, rgba(247,255,155,0.7) 0%, rgba(255,255,255,1) 35%);
+}
+
+.pros-solutions {
+    background: rgb(54,137,18);
+    background: linear-gradient(180deg, rgba(54,137,18,0.3) 0%, rgba(255,255,255,1) 35%);
+}
+
+/* extras */
+li.final-crumb > span:before {
+/*    content: "💥 ";f */
+    content: "🔔 ";
+    margin-left: 4px;
+}
+li.final-crumb > span:after {
+    content: " 🔔";
+}

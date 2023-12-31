@@ -1,6 +1,6 @@
 {
   "name": "PrOSCommunity",
-  "version": "2.3",
+  "version": "2.4",
   "author": "g.lacava@gmail.com",
   "developer": {
     "name": "Giacomo Lacava",
@@ -47,18 +47,20 @@
         "https://community.onestreamsoftware.com/t5/Partner-Forum/*",
         "https://community.onestreamsoftware.com/t5/Partners/*",
         "https://community.onestreamsoftware.com/t5/notes/*",
-        "https://community.onestreamsoftware.com/t5/forums/*"
+        "https://community.onestreamsoftware.com/t5/forums/*",
+        "https://community.onestreamsoftware.com/t5/notificationfeed/*"
       ],
-      "css": [
-        "proscommunity.css"
-      ],
-      "js": [
-        "proscommunity.js"
-      ]
+      "css": ["proscommunity.css"],
+      "js":  ["proscommunity.js"]
     },
     {
-     "matches": [ "https://community.onestreamsoftware.com/" ],
-    "css":  ["proscommunity_home.css"]
+      "matches": ["https://community.onestreamsoftware.com/"],
+      "css": ["proscommunity_home.css"]
+    },
+    {
+      "matches": ["https://community.onestreamsoftware.com/t5/notificationfeed/*"],
+      "css": ["proscommunity_notifications.css"],
+      "js":  ["proscommunity_notifications.js"]
     }
   ],
   "icons": {

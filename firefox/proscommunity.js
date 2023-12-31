@@ -409,10 +409,10 @@ if(targetNode) {
 /* generic changes to all pages */
 
 // compact top banner
-let topLogo = document.querySelector("div.logo-icons-left")
-topLogo.remove()
-let target = document.querySelector("div.logo-icons-top-header")
-target.insertBefore(topLogo, target.firstChild)
+let topLogo = document.querySelector("div.logo-icons-left");
+topLogo.remove();
+let target = document.querySelector("div.logo-icons-top-header");
+target.insertBefore(topLogo, target.firstChild);
 
 // move burger menu when collapsed already
 function compactTopBar (e){
