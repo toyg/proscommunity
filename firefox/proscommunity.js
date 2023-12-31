@@ -288,7 +288,7 @@ function elaborate() {
     articles.forEach(n => {
         modNode(n);
     });
-     processQueue();
+    processQueue();
  }
 
  // process queue of label-fetching jobs

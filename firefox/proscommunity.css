@@ -77,9 +77,9 @@ article.custom-message-tile {
 
 /* post title */
 article.custom-message-tile > div > h3 {
-    background-color: #3d65c9;
-    padding: 20px;
-    border-radius: 0px 10px 10px 0px;
+   background-color: #3d65c9;
+   padding: 20px;
+   border-radius: 0px 10px 10px 0px;
 }
 article.custom-message-tile > div > h3 > a {
    font-size: 18px;
