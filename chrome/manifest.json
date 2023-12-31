@@ -1,6 +1,6 @@
 {
   "name": "PrOSCommunity",
-  "version": "2.3",
+  "version": "2.4",
   "author": "g.lacava@gmail.com",
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
@@ -29,7 +29,7 @@
     {
       "run_at": "document_end",
       "matches": [
-         "https://community.onestreamsoftware.com/",
+        "https://community.onestreamsoftware.com/",
         "https://community.onestreamsoftware.com/t5/Forums/*",
         "https://community.onestreamsoftware.com/t5/Rules/*",
         "https://community.onestreamsoftware.com/t5/Security/*",
@@ -44,19 +44,20 @@
         "https://community.onestreamsoftware.com/t5/Partner-Forum/*",
         "https://community.onestreamsoftware.com/t5/Partners/*",
         "https://community.onestreamsoftware.com/t5/notes/*",
-        "https://community.onestreamsoftware.com/t5/forums/*"
-
+        "https://community.onestreamsoftware.com/t5/forums/*",
+        "https://community.onestreamsoftware.com/t5/notificationfeed/*"
       ],
-      "css": [
-        "proscommunity.css"
-      ],
-      "js": [
-        "proscommunity.js"
-      ]
+      "css": ["proscommunity.css"],
+      "js":  ["proscommunity.js"]
     },
     {
-     "matches": [ "https://community.onestreamsoftware.com/" ],
-    "css":  ["proscommunity_home.css"]
+      "matches": ["https://community.onestreamsoftware.com/"],
+      "css": ["proscommunity_home.css"]
+    },
+    {
+      "matches": ["https://community.onestreamsoftware.com/t5/notificationfeed/*"],
+      "css": ["proscommunity_notifications.css"],
+      "js":  ["proscommunity_notifications.js"]
     }
   ],
   "icons": {
