@@ -313,6 +313,31 @@ div.lia-message-subject {
     font-size: 20px !important;
     display: none !important;}
 
+/* highlight crumb */
+li.final-crumb > span {
+    border-radius: 20px;
+    border: 2px solid rgba(61, 101, 201, 0.3);
+    padding: 6px 60px !important;
+    display: inline-block;
+    background: rgb(61, 101, 201);
+    background: linear-gradient(180deg, rgba(61, 101, 201, 0.3) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(61, 101, 201, 0.3) 100%);
+    font-family: "CustomFont1", serif;
+    font-weight: bold;
+}
+
+/* improve options */
+div#actionMenuDropDown {
+    border-radius: 20px;
+    padding-right: 10px !important;
+    border: 2px solid rgb(61, 101, 201);
+    background: rgb(61, 101, 201);
+    /*
+    background: linear-gradient(180deg, rgba(61, 101, 201, 0.9) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(61, 101, 201, 0.9) 100%);
+    */
+}
+a#dropDownLink { padding: 2px 30px; color: white !important; }
+a#dropDownLink::after { top: 6px; color: white !important;}
+
 /* dynamically assigned */
 .pros-hidden {
      display: none;
@@ -322,22 +347,31 @@ div.lia-message-subject {
 }
 .pros-zeroreply {
     border-radius: 0px 22px 10px 0;
-    background-color: #FFF5C9;
+    background: rgb(237,104,9);
+    background: linear-gradient(180deg, rgba(237,104,9,0.5) 0%, rgba(255,255,255,1) 60%);
 }
 .pros-hot {
     border-radius: 0px 22px 10px 0;
-    background-color: #D9F5FF !important;
     opacity: 1 !important;
+    background: rgb(178,217,232);
+    background: linear-gradient(180deg, rgba(178,217,232,0.8) 0%, rgba(255,255,255,1) 60%);
+
 }
 .pros-solved {
     border-radius: 0px 22px 10px 0;
-    background-color: #E3FFE5;
-    opacity: 0.30;
+    background: rgb(54,137,18);
+    background: linear-gradient(180deg, rgba(54,137,18,0.6) 0%, rgba(255,255,255,1) 60%);
+    opacity: 0.50;
 }
 
 article.pros-solved > div > h3::after {
     background-color: #E3FFE5;
     border-color: #E3FFE5;
+}
+
+article.pros-ideas {
+	background: rgb(128,128,128);
+	background: linear-gradient(180deg, rgba(128,128,128,0.4) 0%, rgb(255, 255, 255) 40%);
 }
 
 .pros-alwaysOn {

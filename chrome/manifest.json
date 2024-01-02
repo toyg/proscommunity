@@ -59,6 +59,15 @@
       "matches": ["https://community.onestreamsoftware.com/t5/notificationfeed/*"],
       "css": ["proscommunity_notifications.css"],
       "js":  ["proscommunity_notifications.js"]
+    },
+    {
+      "run_at": "document_end",
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community",
+        "https://community.onestreamsoftware.com/t5/Solution-Exchange/ct-p/SolutionExchange"
+      ],
+      "css": ["proscommunity_forumshome.css"],
+      "js":  ["proscommunity_forumshome.js"]
     }
   ],
   "icons": {
