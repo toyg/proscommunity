@@ -64,7 +64,10 @@
       "js":  ["proscommunity_notifications.js"]
     },
     {
-      "matches": ["https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community"],
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community",
+        "https://community.onestreamsoftware.com/t5/Solution-Exchange/ct-p/SolutionExchange"
+      ],
       "css": ["proscommunity_forumshome.css"],
       "js":  ["proscommunity_forumshome.js"]
     }

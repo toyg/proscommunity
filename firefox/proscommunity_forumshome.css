@@ -4,13 +4,12 @@
 }
 div.custom-tiled-node-navigation > section > div > article {
     border-radius: 8px;
-    border: solid 1px rgba(178,217,232,1);
+    border: solid 1px rgba(61, 101, 201, 1);;
     margin: 4px 10px !important;
     background: rgb(61, 101, 201);
     background: linear-gradient(180deg, rgba(61, 101, 201, 0.6) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(61, 101, 201, 0.6) 100%);
     padding: 10px 0px 10px 0px;
     filter: drop-shadow(2px 2px 3px grey);
-    ;
 }
 div.custom-tiled-node-navigation > section > div > article > h3 {
     padding: 0px 4px;
