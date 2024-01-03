@@ -332,6 +332,16 @@ function addControl(key, listNode){
     })
 }
 
+/* because of the late re-layouting, anchor-jumping breaks when the extension is on.
+ So we detect anchors in URLs and jump back to it. Use at the end of operations. */
+function reJumpToAnchor(){
+    let u = new URL(window.location.href);
+    if(u.hash){
+        location.href = u.hash;
+        history.replaceState(null,null,url);
+    }
+}
+
 // main flow
 let headerSelector = document.querySelector("header");
 
@@ -427,3 +437,4 @@ function compactTopBar (e){
 }
 compactTopBar();
 addEventListener("resize", compactTopBar);
+reJumpToAnchor();
