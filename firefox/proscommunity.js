@@ -423,6 +423,7 @@ let topLogo = document.querySelector("div.logo-icons-left");
 topLogo.remove();
 let target = document.querySelector("div.logo-icons-top-header");
 target.insertBefore(topLogo, target.firstChild);
+document.querySelector("div.lia-quilt-row-header-bottom").classList.add("pros_banner_forum");
 
 // move burger menu when collapsed already
 function compactTopBar (e){

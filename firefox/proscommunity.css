@@ -315,6 +315,20 @@ div.lia-message-subject {
     display: none !important;}
 
 /* highlight crumb */
+div.BreadCrumb > ul.lia-list-standard-inline {
+    padding: 8px 8px;
+}
+
+div.lia-quilt-row-header-top {
+    z-index: 99 !important;
+    position: relative !important;
+}
+div.lia-quilt-row-header-bottom {
+    background: white;
+    z-index: 1;
+ 	box-shadow: inset 0px -3px 3px -2px rgba(0,0,0,0.25);
+ 	margin-bottom: 8px !important;
+}
 li.final-crumb > span {
     border-radius: 20px;
     border: 2px solid rgba(61, 101, 201, 0.3);
@@ -325,6 +339,25 @@ li.final-crumb > span {
     font-family: "CustomFont1", serif;
     font-weight: bold;
 }
+
+div.pros_banner_forum {
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 70%,rgba(255,255,255,1) 100%),
+      url("https://community.onestreamsoftware.com/html/assets/Banner_OneCommunityForums-1-EDIT_2000x800.jpg") no-repeat center / cover;
+}
+div.pros_banner_partner {
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 70%,rgba(255,255,255,1) 100%),
+      url("https://community.onestreamsoftware.com/html/assets/Partner-Banner-2-people.png") no-repeat center / cover;
+}
+div.pros_banner_mod {
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 70%,rgba(255,255,255,1) 100%),
+      url("https://community.onestreamsoftware.com/html/assets/Banner_Moderation-2_2000x800.jpg") no-repeat center / cover;
+}
+div.pros_banner_home {
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 10%,rgba(255,255,255,0.3) 90%,rgba(255,255,255,1) 100%),
+      url("https://community.onestreamsoftware.com/html/assets/Banner_AboutOneCommunity-1_2000x800.jpg") no-repeat center / cover;
+}
+
+ul.UserNavigation { position: relative !important; z-index: 99 !important; }
 
 /* improve options */
 div#actionMenuDropDown {

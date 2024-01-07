@@ -1,6 +1,21 @@
 .lia-quilt-row-header-hero { display: none; }
 h2 { display: none;}
 .lia-quilt-row-main-top { display: none; }
-
+.lia-quilt-row-header-bottom { height: 57px; }
+.pros_newWelcome {
+    display: block;
+    width: 40%;
+    min-width: 350px;
+    margin: auto;
+    margin-top: 9px;
+    border-radius: 20px;
+    border: 2px solid rgba(61, 101, 201, 0.3);
+    padding: 6px 60px !important;
+    background: rgb(61, 101, 201);
+    background: linear-gradient(180deg, rgba(61, 101, 201, 0.3) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(61, 101, 201, 0.3) 100%);
+    text-align: center;
+    font-family: "CustomFont1", serif;
+    font-weight: bold;
+}
 header { padding-top: 6px;}
 .pros-ideas { background-color: #e6e6e6;}
