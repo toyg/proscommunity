@@ -42,6 +42,7 @@
         "https://community.onestreamsoftware.com/t5/French-Language-Forum/*",
         "https://community.onestreamsoftware.com/t5/Solution-Exchange/*",
         "https://community.onestreamsoftware.com/t5/Moderate/*",
+        "https://community.onestreamsoftware.com/t5/Abuse-Reports/*",
         "https://community.onestreamsoftware.com/t5/Partner-Forum/*",
         "https://community.onestreamsoftware.com/t5/Partners/*",
         "https://community.onestreamsoftware.com/t5/notes/*",
@@ -53,6 +54,7 @@
     },
     {
       "matches": ["https://community.onestreamsoftware.com/"],
+      "js": ["pros_home.js"],
       "css": ["proscommunity_home.css"]
     },
     {
@@ -66,8 +68,26 @@
         "https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community",
         "https://community.onestreamsoftware.com/t5/Solution-Exchange/ct-p/SolutionExchange"
       ],
-      "css": ["proscommunity_forumshome.css"],
-      "js":  ["proscommunity_forumshome.js"]
+      "js":  ["pros_sidebar.js"],
+      "css": ["pros_sidebar.css"]
+    },
+    {
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Partners/ct-p/Partner",
+        "https://community.onestreamsoftware.com/t5/Partner-Forum/*"
+      ],
+      "js":  ["pros_partnerforum.js", "pros_sidebar.js"],
+      "css": ["pros_sidebar.css"]
+    },
+    {
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Moderate/*",
+        "https://community.onestreamsoftware.com/t5/Abuse-Reports/*",
+        "https://community.onestreamsoftware.com/t5/Filter-Notifications/*",
+        "https://community.onestreamsoftware.com/t5/Moderation-Forum-Archive/*"
+      ],
+      "js":  ["pros_moderate.js"],
+      "css": ["pros_sidebar.css"]
     }
   ],
   "icons": {
