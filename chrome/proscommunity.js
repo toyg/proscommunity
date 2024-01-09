@@ -338,7 +338,7 @@ function reJumpToAnchor(){
     let u = new URL(window.location.href);
     if(u.hash){
         location.href = u.hash;
-        history.replaceState(null,null,url);
+        history.replaceState(null,null,u);
     }
 }
 
