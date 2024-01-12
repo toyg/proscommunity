@@ -74,12 +74,12 @@
     {
       "matches": ["https://community.onestreamsoftware.com/"],
       "js": ["pros_home.js"],
-      "css": ["proscommunity_home.css"]
+      "css": ["pros_home.css"]
     },
     {
       "matches": ["https://community.onestreamsoftware.com/t5/notificationfeed/*"],
-      "css": ["proscommunity_notifications.css"],
-      "js":  ["proscommunity_notifications.js"]
+      "css": ["pros_notifications.css"],
+      "js":  ["pros_notifications.js"]
     },
     {
       "run_at": "document_idle",
@@ -95,7 +95,10 @@
         "https://community.onestreamsoftware.com/t5/Partners/ct-p/Partner",
         "https://community.onestreamsoftware.com/t5/Partner-Forum/*"
       ],
-      "js":  ["pros_partnerforum.js", "pros_sidebar.js"],
+      "js":  [
+        "pros_partnerforum.js",
+        "pros_sidebar.js"
+      ],
       "css": ["pros_sidebar.css"]
     },
     {
