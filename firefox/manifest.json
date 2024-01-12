@@ -85,6 +85,7 @@
       "js":  ["proscommunity_notifications.js"]
     },
     {
+      "run_at": "document_idle",
       "matches": [
         "https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community",
         "https://community.onestreamsoftware.com/t5/Solution-Exchange/ct-p/SolutionExchange"
