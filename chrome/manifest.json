@@ -1,6 +1,6 @@
 {
   "name": "PrOSCommunity",
-  "version": "2.6",
+  "version": "2.7",
   "author": "g.lacava@gmail.com",
   "description": "Unofficial enhancements to OneStream Community forums",
   "permissions": [
@@ -50,7 +50,26 @@
         "https://community.onestreamsoftware.com/t5/notificationfeed/*"
       ],
       "css": ["proscommunity.css"],
-      "js":  ["proscommunity.js"]
+      "js":  [
+        "pros__common.js",
+        "proscommunity.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://community.onestreamsoftware.com/t5/Rules/*",
+        "https://community.onestreamsoftware.com/t5/Security/*",
+        "https://community.onestreamsoftware.com/t5/Application-Build/*",
+        "https://community.onestreamsoftware.com/t5/Reporting/*",
+        "https://community.onestreamsoftware.com/t5/MarketPlace/bd-p/*",
+        "https://community.onestreamsoftware.com/t5/MarketPlace/*/td-p/*",
+        "https://community.onestreamsoftware.com/t5/OpenPlace/*",
+        "https://community.onestreamsoftware.com/t5/Workflow-and-Data-Integration/*",
+        "https://community.onestreamsoftware.com/t5/French-Language-Forum/*",
+        "https://community.onestreamsoftware.com/t5/Partner-Forum/*",
+        "https://community.onestreamsoftware.com/t5/Abuse-Reports/*"
+      ],
+      "js": ["pros_post.js"]
     },
     {
       "matches": ["https://community.onestreamsoftware.com/"],
@@ -63,7 +82,7 @@
       "js":  ["proscommunity_notifications.js"]
     },
     {
-      "run_at": "document_end",
+      "run_at": "document_idle",
       "matches": [
         "https://community.onestreamsoftware.com/t5/Forums/ct-p/your-community",
         "https://community.onestreamsoftware.com/t5/Solution-Exchange/ct-p/SolutionExchange"
