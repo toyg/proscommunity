@@ -19,9 +19,7 @@ function buildCacheId(urlHash){
 
 // cache labels
 function cacheLabels(url, domDocument){
-console.log("caching", url)
     let urlHash = hashCode(url);
-console.log(urlHash)
     let thisCacheId = buildCacheId(urlHash);
     let lls = domDocument.querySelectorAll("li.label");
     let values = [].map.call(lls, (node) => {
