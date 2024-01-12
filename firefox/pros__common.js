@@ -13,11 +13,10 @@ function hashCode(str) {
     return hash;
 }
 
+// cache labels
 function buildCacheId(urlHash){
     return `cache_${urlHash}`;
 }
-
-// cache labels
 function cacheLabels(url, domDocument){
     let urlHash = hashCode(url);
     let thisCacheId = buildCacheId(urlHash);
@@ -40,6 +39,32 @@ function isSummaryPage(){
                 pageUrl.pathname.includes("/Partners/") ||
                 pageUrl.pathname.includes("/Solution-Exchange/") ||
                 pageUrl.pathname === "/";
+}
+
+// create lateral box
+function makeSideBarBox(){
+    let top = document.createElement("div");
+    classes = "lia-panel lia-panel-standard Chrome".split(" ");
+    for(klass in classes) top.classList.add(classes[klass]);
+    let mid = document.createElement("div");
+    mid.classList.add("lia-decoration-border");
+    let klasses = ["lia-decoration-border-top", "lia-decoration-border-content", "lia-decoration-border-bottom"];
+    for(k in klasses ){
+        let b = document.createElement("div");
+        b.classList.add(klasses[k]);
+        b.appendChild(document.createElement("div"));
+        mid.appendChild(b);
+    }
+    top.appendChild(mid)
+    return top;
+}
+
+// create links
+function makeLink(text, url){
+    let node = document.createElement("a");
+    node.setAttribute("href", url);
+    node.appendChild(document.createTextNode(text));
+    return node;
 }
 
 /* because of the late re-layouting, anchor-jumping breaks when the extension is on.
