@@ -1,18 +1,5 @@
-const prjCode = "PrOSCommunity";
 
-const baseUrl = "https://community.onestreamsoftware.com";
 const filteredBaseUrl = baseUrl + "/t5/forums/filteredbylabelpage/board-id/"
-
-//browser.storage.local.clear();
-
-// autologin support
-browser.storage.sync.get({ autologin: false },
-    function(items) {
-        if(items.autologin == true){
-            let loginNodes = document.getElementsByClassName("login-link");
-            if(loginNodes[0] != null) loginNodes[0].click();
-        }
-    });
 
 // filter posts
 var hiddenScore = 0;
@@ -42,6 +29,7 @@ function togglePost(node, hideIt){
     }
 }
 
+// for post icons
 function getMappedClassForBoard(msgUrl){
     let board = msgUrl.split("/")[2];
     switch(board){
@@ -105,23 +93,14 @@ function alreadyInQueue(url){
     }
     return false;
 }
-// hashcode to keep track of stuff already downloaded
-function hashCode(str) {
-    let hash = 0;
-    for (let i = 0, len = str.length; i < len; i++) {
-        let chr = str.charCodeAt(i);
-        hash = (hash << 5) - hash + chr;
-        hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-}
 
 var parser = new DOMParser();
 function fetchLabels(job){
     let url = job.url;
     let targetNode = job.node;
     // define cache key and look it up
-    let cacheId = "cache_" + hashCode(job.url);
+    // note: hashCode is in pros__common.js
+    let cacheId = buildCacheId(hashCode(job.url));
     browser.storage.local.get(cacheId).then(
         (items) => {
             // returned "items" is always an object,
@@ -138,14 +117,8 @@ function fetchLabels(job){
                     return t.text()
                 }).then(html => {
                     let doc = parser.parseFromString(html, "text/html");
-                    let lls = doc.querySelectorAll("li.label");
-                    let values = [].map.call(lls, (node) => {
-                        return node.innerText.trim();});
-                    // set in page cache (this could be in storage.session maybe...)
-                    postFetchMap[hashCode(url)] = values;
-                    // set in local storage to use on page reload
-                    browser.storage.local.set(
-                        {[`${cacheId}`]: JSON.stringify(values)});
+                    // note: in pros__common
+                    let values = cacheLabels(url, doc);
                     dequeue(job);
                     addLabels(targetNode, values);
                 }).catch(err => {
@@ -257,20 +230,11 @@ function modNode(n) {
     document.getElementById("hiddenScore").innerText = hiddenScore;
 };
 
-// detect if page is a "summary" one, which are often treated differently
-function isSummaryPage(){
-    let pageUrl = new URL(window.location.href);
-
-    return pageUrl.pathname.includes("/Forums/") ||
-                pageUrl.pathname.includes("/Partners/") ||
-                pageUrl.pathname.includes("/Solution-Exchange/") ||
-                pageUrl.pathname === "/";
-}
-
 // get all posts on the page
 function listPosts(){
     let selector = "div.message-list > article";
     // summary pages have a different structure
+    // note: isSummaryPage is in pros__common
     if(!isSummaryPage()){
         selector = "div.custom-message-list > section > article";
     }
@@ -333,16 +297,6 @@ function addControl(key, listNode){
             disable(key);
         }
     })
-}
-
-/* because of the late re-layouting, anchor-jumping breaks when the extension is on.
- So we detect anchors in URLs and jump back to it. Use at the end of operations. */
-function reJumpToAnchor(){
-    let u = new URL(window.location.href);
-    if(u.hash){
-        location.href = u.hash;
-        history.replaceState(null,null,u);
-    }
 }
 
 // main flow
@@ -417,28 +371,3 @@ if(targetNode) {
 }
 
 /* generic changes to all pages */
-
-// compact top banner
-let topLogo = document.querySelector("div.logo-icons-left");
-topLogo.remove();
-let target = document.querySelector("div.logo-icons-top-header");
-target.insertBefore(topLogo, target.firstChild);
-document.querySelector("div.lia-quilt-row-header-bottom").classList.add("pros_banner_forum");
-
-// move burger menu when collapsed already
-function compactTopBar (e){
-    let burger = document.querySelector("button.lia-slide-menu-trigger");
-    let topBurger = document.querySelector("div.lia-slide-out-nav-menu");
-    // first, move the burger icon
-    burger.remove();
-    document.querySelector("div.logo-icons-right").appendChild(burger);
-    // then, check if it has to be visible or not
-    if(topBurger.checkVisibility()){
-        burger.style.display = "inline-block";
-    } else {
-        burger.style.display = "none";
-    }
-}
-compactTopBar();
-addEventListener("resize", compactTopBar);
-reJumpToAnchor();
