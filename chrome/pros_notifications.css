@@ -78,3 +78,7 @@ li.final-crumb > span:before {
 li.final-crumb > span:after {
     content: " 🔔";
 }
+/* fix padding */
+div.BreadCrumb > ul {
+    padding-bottom: 8px !important;
+}
