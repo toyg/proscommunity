@@ -90,7 +90,7 @@ console.log(`[${prjCode}] monitor last checked: ${lastChecked}`);
                             });
                             browser.notifications.onClicked.addListener(function(notificationId) {
                                 //Open a new tab with the desired URL:
-                                browser.tabs.create({url: forumLink});
+                                browser.tabs.create({url: postLink});
                             });
                             // break
                             break;
