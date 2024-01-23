@@ -521,3 +521,10 @@ ul.pros-labels > li:last-child::after {
     margin-right: 0px;
 }
 
+/* breadcrumb logo */
+a.lia-breadcrumb-community > img {
+    width: 150px;
+    vertical-align: bottom;
+    margin-bottom: 4px;
+    filter: opacity(0.8);
+}

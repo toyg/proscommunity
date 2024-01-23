@@ -4,7 +4,11 @@ topBar.classList.remove("pros_banner_forum");
 topBar.classList.add("pros_banner_home");
 let newWelcome = document.createElement("div");
 newWelcome.classList.add("pros_newWelcome");
-newWelcome.appendChild(document.createTextNode("Welcome Back to OneCommunity!"));
+newWelcome.appendChild(document.createTextNode("Welcome Back to "));
+let ocLogo = document.createElement("img");
+ocLogo.setAttribute("src", "https://community.onestreamsoftware.com/html/@6A3A68812DD3ACDDFDA11CF2ACF04881/assets/onecommunitylogo.png");
+newWelcome.appendChild(ocLogo);
+
 topBar.appendChild(newWelcome);
 
 let navbar = document.querySelector("div.lia-quilt-column-side-content");

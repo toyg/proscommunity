@@ -371,3 +371,12 @@ if(targetNode) {
 }
 
 /* generic changes to all pages */
+
+// replace breadcrumb with logo
+let bc = document.querySelector("a.lia-breadcrumb-community");
+if(bc != null){
+    bc.removeChild(bc.firstChild);
+    let ocLogo = document.createElement("img");
+    ocLogo.setAttribute("src", "https://community.onestreamsoftware.com/html/@6A3A68812DD3ACDDFDA11CF2ACF04881/assets/onecommunitylogo.png");
+    bc.appendChild(ocLogo);
+}
