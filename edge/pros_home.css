@@ -1,0 +1,52 @@
+.lia-quilt-row-header-hero { display: none; }
+h2 { display: none;}
+.lia-quilt-row-main-top { display: none; }
+.lia-quilt-row-header-bottom { height: 57px; }
+.pros_newWelcome {
+    display: block;
+    width: 40%;
+    min-width: 350px;
+    margin: auto;
+    margin-top: 9px;
+    border-radius: 20px;
+    border: 2px solid rgba(61, 101, 201, 0.3);
+    padding: 6px 60px !important;
+    background: rgb(61, 101, 201);
+    background: linear-gradient(180deg, rgba(61, 101, 201, 0.3) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(61, 101, 201, 0.3) 100%);
+    text-align: center;
+    font-family: "CustomFont1", serif;
+    font-weight: bold;
+}
+header { padding-top: 6px;}
+.pros-ideas { background-color: #e6e6e6;}
+.pros-homelink {
+    padding: 6px 12px;
+    padding-left: 30px;
+    font-weight: bold;
+}
+.pros-homeul {
+    padding: 0; margin: 0;
+    margin-left: 24px;
+    margin-bottom: 14px;
+}
+
+.pros-link-forums {
+    padding-left: 32px;
+    background: url('https://community.onestreamsoftware.com/t5/image/serverpage/image-id/4471i89D4F45A8166C375/image-size/medium?v=v2&px=400') left/contain no-repeat;
+}
+.pros-link-partners {
+    padding-left: 32px;
+    background: url('https://community.onestreamsoftware.com/t5/image/serverpage/image-id/4875i55C7915492927FCE/image-size/medium?v=v2&px=500') left/contain no-repeat;
+}
+.pros-link-news {
+    padding-left: 32px;
+    background: url('https://community.onestreamsoftware.com/t5/image/serverpage/image-id/518iB40498EBE234F6B6/image-size/medium?v=v2&px=400') left/contain no-repeat;
+}
+.pros-link-groups {
+    padding-left: 32px;
+    background: url('https://community.onestreamsoftware.com/t5/image/serverpage/image-id/935iC9F9218E228BC7CE/image-size/medium?v=v2&px=400') left/contain no-repeat;
+}
+.pros-link-resources {
+    padding-left: 32px;
+    background: url('https://community.onestreamsoftware.com/t5/image/serverpage/image-id/1390i9A5A69501EB73CCF/image-size/medium?v=v2&px=400') left/contain no-repeat;
+}
